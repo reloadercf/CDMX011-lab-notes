@@ -1,0 +1,49 @@
+.containerLogin{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        min-height: 95vh;
+    }
+.login-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+.logo {
+    width: 100%;
+    margin: 0;
+    padding: 0%;
+    cursor: pointer;
+}
+.icon{
+    width: 20px;
+    height: 20px;
+}
+a:link {
+    cursor: pointer;
+    color: #C8C6C6;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+a:visited {
+    cursor: pointer;
+    color: #423F3E;
+}
+
+a:active {
+    cursor: pointer;
+    color: #968C83;
+}
+
+a:hover {
+    cursor: pointer;
+    color: #7D5A50;
+}
