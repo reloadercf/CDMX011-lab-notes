@@ -16,11 +16,14 @@ export const AuthProvider = (props)=>{
         })
     },[])
 
-    const register= (auth, email, password)=> {
+    const register= (email, password)=> {
         return createUserWithEmailAndPassword(auth, email, password);
+
     }
-    const login = (auth, email, password)=> {
+    const login = (email, password)=> {
+        console.log('llegate')
         return signInWithEmailAndPassword(auth, email, password);
+        
     }
     const logout = ()=> signOut(auth);
 

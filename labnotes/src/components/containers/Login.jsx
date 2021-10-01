@@ -1,36 +1,31 @@
 import React, { useState } from "react";
 import "../../Styles/Login.css";
-import logo from '../../assets/2.png';
+import logo from "../../assets/2.png";
 import iconGoogle from "../../assets/iconGoogle.png";
 import { Link, useHistory } from "react-router-dom";
 import "../../Styles/App.css";
 import { useAuth } from "../../context/AuthContext";
-import { auth } from "../../firebase";
 
 const Login = () => {
   const { login, loginGoogle } = useAuth();
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const history = useHistory();
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
     try {
-      await login(auth, email, password);
-      await loginGoogle(auth, email, password);
-      setLoading(false);
+      await login(email, password);
+      await loginGoogle(email, password);
+
       history.push("/Home");
     } catch (error) {
-      setLoading(false);
       setError("Wrong Credentials");
-      setTimeout(() => setError(""), 1500);
+      setTimeout(()=> setError(''), 1500);
     }
   };
 
@@ -56,7 +51,6 @@ const Login = () => {
             </Link>
           </div>
         </form>
-        {loading}
         <div className="footerForm">
           <Link to="/SignUp">You do not have an account? Sign up</Link>
         </div>

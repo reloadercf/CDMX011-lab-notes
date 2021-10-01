@@ -8,10 +8,11 @@ const Home = () => {
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
   const history = useHistory();
+  
   const handleLogout = async () => {
     try {
       await logout(auth);
-      history.push('/');
+     history.push('/');
     } catch (error) {
       setError("error");
     }

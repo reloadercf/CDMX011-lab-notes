@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter as Switch, Route, Router } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route  } from "react-router-dom";
+import { PrivateRoute } from "../components/PrivateRoute";
 
 import Home from "../components/containers/Home";
 import Login from "../components/containers/Login";
@@ -10,18 +11,16 @@ import { AuthProvider } from "../context/AuthContext";
 
 const App = () => {
   return (
-    <>
-      <AuthProvider>
-        <Router>
-          <Switch>
-            <Route exact path="/" component={Login}></Route>
-            <Route exact path="/SignUp" component={SignUp}></Route>
-            <Route exact path="/Home" component={Home}></Route>
-            <Route component={NotFound}></Route>
-          </Switch>
-        </Router>
-      </AuthProvider>
-    </>
+    <AuthProvider>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Login}></Route>
+          <Route exact path="/SignUp" component={SignUp}></Route>
+          <PrivateRoute exact path="/Home" component={Home}></PrivateRoute>
+          <Route component={NotFound}></Route>
+        </Switch>
+      </Router>
+    </AuthProvider>
   );
 };
 export default App;
