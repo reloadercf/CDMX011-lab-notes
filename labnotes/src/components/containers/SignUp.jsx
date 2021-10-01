@@ -10,11 +10,11 @@ const SignUp = () => {
           <img src={logo} alt="logoMyNote" />
         </Link>
         <form id="SignUp-form" className="form">
-          <input type="email" id="signUpEmail" placeholder="Email" />
-          <input type="password" id="signUpPassword" placeholder="Password" />
-          <input type="password" id="signUpPassword" placeholder="Confirm Password" />
-          <div className="error-message" id="loginMessages"></div>
-          <button id="btnSignUp">SignUp</button>
+          <input type="email"  placeholder="Email" />
+          <input type="password" placeholder="Password" />
+          <input type="password" placeholder="Confirm Password" />
+          <div className="error-message"></div>
+          <button >SignUp</button>
 
         </form>
       </div>

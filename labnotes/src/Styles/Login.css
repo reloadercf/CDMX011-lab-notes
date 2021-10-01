@@ -1,49 +1,83 @@
-.containerLogin{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        min-height: 95vh;
-    }
+.root{
+    min-height: 95vh;
+  }
+  
+.containerLogin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+}
 .login-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .form {
-    display: flex;
-    flex-direction: column;
-    margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
 }
 
 .logo {
-    width: 100%;
-    margin: 0;
-    padding: 0%;
-    cursor: pointer;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  padding: 0%;
+  cursor: pointer;
 }
-.icon{
-    width: 20px;
-    height: 20px;
+.icon {
+  width: 20px;
+  height: 20px;
 }
 a:link {
-    cursor: pointer;
-    color: #C8C6C6;
-    text-decoration: none;
-    font-size: 12px;
+  cursor: pointer;
+  color: #c8c6c6;
+  text-decoration: none;
+  font-size: 12px;
 }
 
 a:visited {
-    cursor: pointer;
-    color: #423F3E;
+  cursor: pointer;
+  color: #423f3e;
 }
 
 a:active {
-    cursor: pointer;
-    color: #968C83;
+  cursor: pointer;
+  color: #968c83;
 }
 
 a:hover {
-    cursor: pointer;
-    color: #7D5A50;
+  cursor: pointer;
+  color: #7d5a50;
+}
+button {
+  background-color: #3b5998;
+  color: white;
+  margin: 0px;
+  padding: 0px;
+  width: 102%;
+  height: 40px;
+  border-radius: 10px;
+}
+
+input {
+  -webkit-appearance: none;
+  font-size: 36px;
+  margin: 10px;
+  border-color: #6886c5;
+  outline: none;
+  height: 40px;
+  background-color: white;
+  color: #6886c5;
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+  border-radius: 10px;
+  height: 40px;
+}
+::placeholder {
+  color: #707070;
 }
