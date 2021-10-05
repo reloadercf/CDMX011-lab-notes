@@ -5,12 +5,18 @@ import { Link, useHistory } from 'react-router-dom';
 import { auth } from "../../firebase";
 import '../../Styles/Home.css';
 import logo from '../../assets/nav.png';
+import logoHome from '../../assets/home.png'
 
 
-const Home = () => {
+
+const FormNotes = () => {
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
   const history = useHistory();
+  const [title, setTitle] = useState("");
+const [note, setNote] = useState("");
+const handleTitle = (e) => setTitle(e.target.value);
+const handleNote = (e) => setNote(e.target.value);
 
   const handleLogout = async () => {
     try {
@@ -28,20 +34,25 @@ const Home = () => {
  <img src={logo} alt='logonav' className='logoNav'></img>
     </div>
     <div className='logout'>
-    <img src={iconLogout} alt="iconlogout" className="icon" />
     <div className='textlogout'>
+    <img src={iconLogout} alt="iconlogout" className="icon" />
     <Link to="/" onClick={handleLogout}>Sign Off</Link>
-    </div>
+    <img src={logoHome} alt="iconlogout" className="icon" />
+    <Link to="/Home">Home</Link>
+</div>
     </div>
       <div className="error">
         {error && <p className="error-message">{error}</p>}
       </div>
-      <div className='notes'>
-      <Link to='/FormNotes'><button className='btnNotes'>Add a Note</button></Link>
-      </div>
       <div className='container'>
       <h1>Hi</h1>
       <p>{currentUser.email}</p>
+      <form className="form">
+          <input type="text" placeholder="Title" onChange={handleTitle} />
+          <textarea type="text" placeholder="write your note here " onChange={handleNote} />
+          {error && <p className='error' >{error}</p>}
+          <button className='btnNotes'>Add Note</button>
+        </form>
       </div>
       </div>
       <div className="footer">
@@ -53,4 +64,4 @@ const Home = () => {
     </div>
   );
 };
-export default Home;
+export default FormNotes;

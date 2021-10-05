@@ -12,7 +12,7 @@ export const AuthProvider = (props)=>{
 
     useEffect(()=>{
         onAuthStateChanged(auth, (user) =>{
-            setCurrentUser(user);
+           setCurrentUser(user);
         })
     },[])
 

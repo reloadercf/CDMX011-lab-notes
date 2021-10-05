@@ -1,5 +1,6 @@
 .root{
     min-height: 95vh;
+    min-width: 95vh;
   }
   
 .containerLogin {
@@ -8,27 +9,34 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-
+  min-height: 95vh;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  margin: 0;
+  padding: 0%;
+  cursor: pointer;
 }
 .login-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+ 
 }
 .form {
   display: flex;
   flex-direction: column;
-  margin-top: 15px;
+  justify-content: center;
+  margin-top: 50px;
+  width: 90%;
 }
 
-.logo {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin: 0;
-  padding: 0%;
-  cursor: pointer;
-}
+
 .icon {
   width: 20px;
   height: 20px;
@@ -37,47 +45,64 @@ a:link {
   cursor: pointer;
   color: #c8c6c6;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 18px;
 }
 
-a:visited {
-  cursor: pointer;
-  color: #423f3e;
-}
 
-a:active {
-  cursor: pointer;
-  color: #968c83;
-}
-
-a:hover {
-  cursor: pointer;
-  color: #7d5a50;
-}
 button {
-  background-color: #3b5998;
-  color: white;
-  margin: 0px;
-  padding: 0px;
-  width: 102%;
+  background-color: #4199D5;
+  color: #FAF3F3;
+   padding: 0px;
   height: 40px;
   border-radius: 10px;
+  border-color: #4199D5;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 50px;
+  width: 500px;
+
 }
 
 input {
-  -webkit-appearance: none;
-  font-size: 36px;
-  margin: 10px;
-  border-color: #6886c5;
+  
+  font-size: 18px;
+  margin-top: 50px;
+  margin-bottom: 60px;
+  border-color: #A6A9B6;
+  border-top: 2px solid #A6A9B6;
+  border-left: 2px solid #A6A9B6;
   outline: none;
-  height: 40px;
+  height: 50px;
   background-color: white;
-  color: #6886c5;
-  width: 100%;
+  color: #707070;
   font-family: "Open Sans", sans-serif;
   border-radius: 10px;
-  height: 40px;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 ::placeholder {
-  color: #707070;
+  color: #A6A9B6;
+}
+.login-google{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+  font-size: 18px;
+}
+.link-signUp{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+
+}
+.footer{
+  color:#707070;
+  display:flex;
+  justify-content: center;
 }
