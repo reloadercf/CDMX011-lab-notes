@@ -11,14 +11,13 @@ const SignUp = () => {
 
   const { register} = useAuth();
   const [ error, setError] = useState("");
-  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleConfirmPassword = (e)=> setConfirmPassword(e.target.value)
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();

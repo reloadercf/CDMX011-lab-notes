@@ -12,11 +12,13 @@ import logoHome from '../../assets/home.png'
 const FormNotes = () => {
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
+  console.log('soy currenUser', currentUser)
+
   const history = useHistory();
-  const [title, setTitle] = useState("");
-const [note, setNote] = useState("");
-const handleTitle = (e) => setTitle(e.target.value);
-const handleNote = (e) => setNote(e.target.value);
+ // const [title, setTitle] = useState("");
+//const [note, setNote] = useState("");
+//const handleTitle = (e) => setTitle(e.target.value);
+//const handleNote = (e) => setNote(e.target.value);
 
   const handleLogout = async () => {
     try {
@@ -44,12 +46,12 @@ const handleNote = (e) => setNote(e.target.value);
       <div className="error">
         {error && <p className="error-message">{error}</p>}
       </div>
-      <div className='container'>
+      <div className='containerFormNotes'>
       <h1>Hi</h1>
       <p>{currentUser.email}</p>
       <form className="form">
-          <input type="text" placeholder="Title" onChange={handleTitle} />
-          <textarea type="text" placeholder="write your note here " onChange={handleNote} />
+          <input type="text" placeholder="Title"  />
+          <textarea type="text" placeholder="write your note here "  />
           {error && <p className='error' >{error}</p>}
           <button className='btnNotes'>Add Note</button>
         </form>

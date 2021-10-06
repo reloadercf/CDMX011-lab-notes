@@ -1,8 +1,10 @@
 import React from "react";
+import img from "../../assets/404.png";
 const NotFound = () => {
-  <>
-    <h1>Error 404</h1>
-    <h2>Regresa</h2>
-  </>;
+  return (
+    <div>
+      <img src={img} alt="error" />
+    </div>
+  );
 };
 export default NotFound;

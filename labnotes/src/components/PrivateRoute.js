@@ -4,15 +4,13 @@ import { useAuth } from '../context/AuthContext';
 // operador rest
 export const PrivateRoute = ({ component: Component, ...rest }) => {
   const { currentUser } = useAuth();
-  console.log('user', currentUser);
-
+  console.log('user', currentUser)
 
   return (
     <Route
       {...rest}
       render={props => {
         //por aca voy atacar con la longitud
-        console.log('currentUser', currentUser)
         return currentUser ? <Component {...props} /> : <Redirect to='/'/>
       }}
     >
@@ -20,3 +18,4 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
     </Route>
   )
 }
+

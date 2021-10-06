@@ -11,19 +11,20 @@ export const AuthProvider = (props)=>{
     const [currentUser, setCurrentUser] = useState({});
 
     useEffect(()=>{
+
         onAuthStateChanged(auth, (user) =>{
-           setCurrentUser(user);
+            setCurrentUser(user);
+            console.log('soy user', user)
+            const uid = user.uid;
+            console.log('soy UID', uid)
         })
     },[])
 
     const register= (email, password)=> {
         return createUserWithEmailAndPassword(auth, email, password);
-
     }
     const login = (email, password)=> {
-        console.log('llegate')
         return signInWithEmailAndPassword(auth, email, password);
-        
     }
     const logout = ()=> signOut(auth);
 

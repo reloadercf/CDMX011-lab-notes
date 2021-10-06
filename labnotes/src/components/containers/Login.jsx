@@ -5,6 +5,7 @@ import iconGoogle from "../../assets/iconGoogle.png";
 import { Link, useHistory } from "react-router-dom";
 import "../../Styles/App.css";
 import { useAuth } from "../../context/AuthContext";
+import { auth } from "../../firebase";
 
 const Login = () => {
   const { login, loginGoogle } = useAuth();
@@ -18,6 +19,10 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+     const user = auth.currentUser;
+        if (user) {
+  history.push('/Home');
+    } else {
     try {
       const log= await login(email, password);
       console.log('que soy', log);
@@ -26,13 +31,14 @@ const Login = () => {
       setError("Wrong Credentials");
       setTimeout(() => setError(""), 1500);
     }
-  };
+  }};
   const handleGoogle = async(e)=>{
     e.preventDefault();
     try{
       await loginGoogle();
       console.log('ready')
       history.push('/Home');
+      console.log('que trae')
     }catch(error){
       console.error(error);
     }
