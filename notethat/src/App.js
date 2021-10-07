@@ -5,28 +5,25 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import Mynotes from "./components/Mynotes";
 import Home from "./components/Home";
-import { createAccount } from "./firebaseconfig";
-import { loginAccount } from "./firebaseconfig";
+import {AuthProvider} from './context/AuthContext'
 
 function App() {
-  const handleRegister = (email, password) => {
-    createAccount(email, password);
-  };
-  const handleLogin = (email, password) => {
-    loginAccount(email, password);
-  };
+  
+  
   return (
+    <AuthProvider>
     <Router>
     <div>
       <Switch>
       <Route exact path='/' component={Home}></Route>
-        <Route path='/register'><Register handleRegister={handleRegister} /></Route>
-        <Route path='/login'><Login handleLogin={handleLogin} /></Route>
-        <Route path='/notes' component={Mynotes}></Route>
+        <Route path='/register'><Register /></Route>
+        <Route path='/login'><Login /></Route>
+        <Route path='/mynotes' component={Mynotes}></Route>
         
       </Switch>
     </div>
   </Router>
+  </AuthProvider>
   );
 }
 export default App;

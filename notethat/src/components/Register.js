@@ -1,14 +1,30 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,useHistory  } from 'react-router-dom';
+import auth from '../firebaseconfig'
 import "./styles/Register.css";
 import logo from "../assets/logo.png";
 import line from "../assets/line-form.png";
 import facebook from "../assets/facebook.png";
 import google from "../assets/google.png"
+import {useAuth} from '../context/AuthContext';
 
-const Register = ({ handleRegister }) => {
+const Register = () => {
+  const {signup} = useAuth();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const history = useHistory();
+
+  const handleRegister = async ()=>{ 
+    try{
+      await signup(email, pass)
+      console.log('me registreee')
+      history.push('/mynotes')
+    }catch(error){
+     console.log(error)
+     console.log('hay un errorrrrr')
+    }
+ }
+
   return (
     <div className="container">
       <div className="header">

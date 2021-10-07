@@ -1,14 +1,29 @@
 import React,{useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useHistory } from 'react-router-dom';
 import "./styles/Login.css";
 import logo from "../assets/logo.png";
 import line from "../assets/line-form.png";
 import facebook from "../assets/facebook.png";
-import google from "../assets/google.png"
+import google from "../assets/google.png";
+import {useAuth} from '../context/AuthContext';
 
-const Login = ({handleLogin}) => {
+const Login = () => {
+  const {login} = useAuth();
     const [email,setEmail]=useState('')
     const [pass, setPass]=useState('')
+    const history = useHistory();
+
+
+ const handleLogin = async ()=>{ 
+   try{
+     await login(email, pass)
+     console.log('inicieeee sesionnn')
+     history.push('/mynotes')
+   }catch(error){
+    console.log(error)
+    console.log('hay un errorrrrr')
+   }
+}
     return (
         <div className="container">
             <div className="header">
