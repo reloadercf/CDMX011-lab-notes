@@ -51,7 +51,7 @@ const FormNotes = () => {
       <p>{currentUser.email}</p>
       <form className="form">
           <input type="text" placeholder="Title"  />
-          <textarea type="text" placeholder="write your note here "  />
+          <textarea type="text" placeholder="Write your note here "  />
           {error && <p className='error' >{error}</p>}
           <button className='btnNotes'>Add Note</button>
         </form>

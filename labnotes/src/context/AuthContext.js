@@ -14,11 +14,13 @@ export const AuthProvider = (props)=>{
 
         onAuthStateChanged(auth, (user) =>{
             setCurrentUser(user);
-            console.log('soy user', user)
-            const uid = user.uid;
-            console.log('soy UID', uid)
         })
     },[])
+
+    const activeSession =()=>{
+        onAuthStateChanged(auth, (user) =>{
+            setCurrentUser(user) ? console.log('session true') : console.log('session false');
+    })};
 
     const register= (email, password)=> {
         return createUserWithEmailAndPassword(auth, email, password);
@@ -33,7 +35,7 @@ export const AuthProvider = (props)=>{
         signInWithPopup(auth, provider);
     }
 
-    const value = {register, login, logout, loginGoogle, currentUser};
+    const value = {register, login, logout, loginGoogle, currentUser, activeSession};
     return(
         <AuthContext.Provider value={value}>
             {props.children}

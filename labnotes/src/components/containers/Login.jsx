@@ -17,9 +17,11 @@ const Login = () => {
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
      const user = auth.currentUser;
+     console.log('como sale user', user);
         if (user) {
   history.push('/Home');
     } else {
@@ -38,7 +40,6 @@ const Login = () => {
       await loginGoogle();
       console.log('ready')
       history.push('/Home');
-      console.log('que trae')
     }catch(error){
       console.error(error);
     }
