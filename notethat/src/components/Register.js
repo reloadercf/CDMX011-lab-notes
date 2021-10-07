@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link,useHistory  } from 'react-router-dom';
-import auth from '../firebaseconfig'
 import "./styles/Register.css";
 import logo from "../assets/logo.png";
 import line from "../assets/line-form.png";
