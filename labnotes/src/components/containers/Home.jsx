@@ -7,18 +7,19 @@ import "../../Styles/Home.css";
 import logo from "../../assets/nav.png";
 
 const Home = () => {
+  
  // const user = auth.currentUser;
   const [error, setError] = useState("");
-  const { currentUser, logout, activeSession } = useAuth();
+  const { currentUser, logout, ready } = useAuth();
   const history = useHistory();
   //currentUser ? history.push('/Home') : history.push('/');
-  activeSession();
-
+  //ready ? history.push('/Home') : history.push('/')
+  ready ? console.log('session true') : console.log('session false');
   const handleLogout = async () => {
     try {
       await logout(auth);
-      currentUser ? console.log('sesion activa') : console.log('sesion NO activa')
-      console.log('hice logouy', currentUser)
+      
+      console.log('im logout', currentUser)
       history.push("/");
     } catch (error) {
       setError("Server Error");

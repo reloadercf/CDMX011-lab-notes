@@ -3,7 +3,7 @@ import logo from "../../assets/logoColor.png";
 // import { Link } from "react-router-dom";
 import "../../Styles/SignUp.css";
 import "../../Styles/App.css";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 

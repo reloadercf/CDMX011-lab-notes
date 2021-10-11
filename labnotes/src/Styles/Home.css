@@ -1,5 +1,5 @@
 .contentNotes{
-    min-height: 95vh;;
+    min-height: 95vh;
 }
 .navBar{
     height: 100px;
@@ -54,4 +54,8 @@ link{
       height: 250px;
       border-radius: 10px;
   
+  }
+  .footer{
+      display: flex;
+      justify-content: center;
   }

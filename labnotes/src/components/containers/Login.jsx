@@ -10,15 +10,14 @@ import { auth } from "../../firebase";
 const Login = () => {
   const { login, loginGoogle } = useAuth();
   const [error, setError] = useState("");
-  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
 
-
-  const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
     e.preventDefault();
      const user = auth.currentUser;
      console.log('como sale user', user);
@@ -28,6 +27,7 @@ const Login = () => {
     try {
       const log= await login(email, password);
       console.log('que soy', log);
+      console.log('history login', history);
       history.push("/Home");
     } catch (error) {
       setError("Wrong Credentials");
@@ -37,8 +37,10 @@ const Login = () => {
   const handleGoogle = async(e)=>{
     e.preventDefault();
     try{
+      
       await loginGoogle();
-      console.log('ready')
+      console.log('ready google')
+      console.log('history login', history);
       history.push('/Home');
     }catch(error){
       console.error(error);

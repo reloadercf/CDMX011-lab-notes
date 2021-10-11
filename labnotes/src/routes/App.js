@@ -1,28 +1,28 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route  } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { PrivateRoute } from "../components/PrivateRoute";
 
 import Home from "../components/containers/Home";
 import Login from "../components/containers/Login";
 import SignUp from "../components/containers/SignUp";
 import NotFound from "../components/containers/NotFound";
-import FormNotes from "../components/containers/FormNotes";
+// import FormNotes from "../components/containers/FormNotes";
 
 import { AuthProvider } from "../context/AuthContext";
 
 const App = () => {
   return (
-    <AuthProvider>
-      <Router>
+    <Router>
+      <AuthProvider>
         <Switch>
           <Route exact path="/" component={Login}></Route>
           <Route exact path="/SignUp" component={SignUp}></Route>
           <PrivateRoute exact path="/Home" component={Home}></PrivateRoute>
-          <Route exact path="/FormNotes" component={FormNotes}></Route>
+          {/* <Route exact path="/FormNotes" component={FormNotes}></Route> */}
           <Route component={NotFound}></Route>
         </Switch>
-      </Router>
-    </AuthProvider>
+      </AuthProvider>
+    </Router>
   );
 };
 export default App;
