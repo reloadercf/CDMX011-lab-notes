@@ -3,7 +3,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  onAuthStateChanged,
+  onAuthStateChanged, updateProfile, GoogleAuthProvider, signInWithPopup
 } from "firebase/auth";
 import { auth } from "../firebaseconfig";
 
@@ -29,7 +29,19 @@ export const AuthProvider = (props) => {
   const logout = () => {
     signOut(auth);
   };
-  const value = { signup, login, logout, currentUser };
+
+  const updateName = (displayUserName) => {
+    return updateProfile(auth.currentUser, {displayName: displayUserName});
+  }
+ 
+
+const loginGoogle=()=>{
+  const provider = new GoogleAuthProvider();
+  signInWithPopup(auth, provider);
+} 
+
+  const value = { signup, login, logout, currentUser, updateName, loginGoogle };
+
   return (
     <AuthContext.Provider value={value}>{props.children}</AuthContext.Provider>
   );

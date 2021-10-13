@@ -1,36 +1,80 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Note } from "./Note";
+import { Modal } from './Modal';
 import logo from "../assets/logo.png";
-import { useHistory } from "react-router-dom";
+import "./styles/Mynotes.css";
+import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import {auth} from '../firebaseconfig'
+import { auth } from "../firebaseconfig";
+import { db } from "../firebaseconfig";
+import { collection, query, onSnapshot } from "firebase/firestore";
+import { Icon } from '@iconify/react';
 
 function Mynotes() {
-    const { currentUser,logout } = useAuth();
-    const history = useHistory();
+  const [notes, setNotes] = useState([]);
+  const { currentUser, logout } = useAuth();
+  const history = useHistory();
 
-    const handleLogout = async () => {
-       try{
-        await logout(auth)
-        history.push('/')
-        console.log('cerre sesion')
-       }catch(error){
-        console.log('hay un error')
-       }
-      };
+  const handleLogout = async () => {
+    try {
+      await logout(auth);
+      history.push("/login");
+      console.log("cerre sesion");
+    } catch (error) {
+      console.log("hay un error");
+    }
+  };
 
+  useEffect(() => {
+    const q = query(collection(db, "notes"));
+    onSnapshot(q, (querySnapshot) => {
+      const documents = [];
+      querySnapshot.forEach((doc) => {
+        documents.push({ id: doc.id, ...doc.data() });
+      });
+      setNotes(documents);
+    });
+  }, [notes]);
+
+  const [isVisible, setIsVisible] = useState(false);
+
+  const showModal = () => setIsVisible(true);
+  const hideModal = () => setIsVisible(false);
+ 
+  const newNote = {title:'' , information:''};
 
   return (
     <div className="container-mynotes">
       <div className="header">
-        <img src={logo} alt="logo" className="logotype" />
-        <button className="btn-register"  onClick={handleLogout}>Log Out</button>
+        <Link to="/">
+          <img src={logo} alt="logo" className="logotype" />
+        </Link>
+        <button className="btn-heading-logout" onClick={handleLogout}>
+          Log Out
+        </button>
       </div>
-      <div className="content">
-        <button>My Notes</button>
-        <button>Create a new note</button>
-        <h1>Welcome</h1>
-        <p>{currentUser.email}</p>
+      
+        <div className="div-btns">
+        <div className="div-my-notes">
+          <p>My Notes </p>
+          <p>{currentUser.email}</p>
+          </div>
+          
+          <button className="btn-create-note" onClick={showModal}>
+            Create  <span className="that-span"> that </span> new note <Icon className="add-icon" icon="ant-design:file-add-outlined" color="#20399f" height="28" />
+          </button>
+        </div>
+     
+      <div className="notes-container">
+        {notes.map((note) => (
+          <Note key={note.id} note={note} />
+        ))}
       </div>
+          {
+            isVisible && 
+            <Modal mode='create' isVisible={isVisible} note={newNote} hideModal={hideModal} />
+          }
+
     </div>
   );
 }

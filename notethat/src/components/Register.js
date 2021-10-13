@@ -8,11 +8,12 @@ import google from "../assets/google.png";
 import { useAuth } from "../context/AuthContext";
 
 const Register = () => {
-  const { signup } = useAuth();
+  const { signup,updateName,loginGoogle } = useAuth();
   const [error, setError]=useState('null');
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
+  const [displayUserName, setUserName] = useState("");
   const history = useHistory();
 
   const handleRegister = () => {
@@ -32,6 +33,31 @@ const Register = () => {
     }
   };
 
+  const handleGoogle = async () => {
+    try{
+await loginGoogle();
+history.push('/mynotes')
+console.log('google')
+    }catch (error){
+      console.log('hay un error en google')
+      setError('Wrong credentials,try again.')
+      console.log(error);
+    } 
+  };
+
+  const handleUpdate = () => {
+      updateName(displayUserName)
+      .then(() => {
+        console.log("me actualice");
+      })
+      .catch((error) => {
+        setError('Wrong credentials,try again.')
+        console.log(error);
+        console.log("hay un error en la actualizacion");
+      });
+  };
+
+
   return (
     <div className="container">
       <div className="header">
@@ -46,7 +72,9 @@ const Register = () => {
       </div>
       <div className="form-content">
         <h4>Name</h4>
-        <input type="text" />
+        <input type="text" onChange={(e) => {
+            setUserName(e.target.value);
+          }}/>
         <h4>Email</h4>
         <input
           type="text"
@@ -69,7 +97,9 @@ const Register = () => {
           className="btn-register"
           onClick={() => {
             handleRegister(email, pass,confirmPass);
-          }}
+            handleUpdate(displayUserName);
+
+          }}  
         >
           Registrate
         </button>
@@ -79,15 +109,15 @@ const Register = () => {
             <img src={facebook} alt="facebook-logo" className="facebook-logo" />
             Facebbok
           </button>
-          <button className="btn-google">
-            <img src={google} alt="google-logo" className="google-logo" />
+          <button className="btn-google"  onClick={handleGoogle} >
+            <img src={google} alt="google-logo" className="google-logo"  />
             Google
           </button>
         </div>
       </div>
 
       <p className="link-to">
-        Already have an account? <Link to="/login">Log In</Link>
+        Already have an account? <Link to="/login" className="links">Log In</Link>
       </p>
     </div>
   );
