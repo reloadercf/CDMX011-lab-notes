@@ -15,7 +15,7 @@ function Home() {
         <Link to="/register">
       <button className="btn-heading-signup"> Sign Up 
       </button ></Link>
-      <Link to="/register"><button className="btn-heading-login"  > Log In 
+      <Link to="/login" ><button className="btn-heading-login" > Log In 
       </button></Link>
     </div>
     <div className="home-title">

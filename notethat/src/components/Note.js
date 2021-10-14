@@ -11,6 +11,7 @@ export const Note = ({ note }) => {
 
   const showModal = () => setIsVisible(true);
   const hideModal = () => setIsVisible(false);
+
  
 
   const deleteNote = async () => {

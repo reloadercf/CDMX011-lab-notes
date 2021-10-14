@@ -7,7 +7,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { auth } from "../firebaseconfig";
 import { db } from "../firebaseconfig";
-import { collection, query, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 import { Icon } from '@iconify/react';
 
 function Mynotes() {
@@ -26,15 +26,23 @@ function Mynotes() {
   };
 
   useEffect(() => {
-    const q = query(collection(db, "notes"));
-    onSnapshot(q, (querySnapshot) => {
-      const documents = [];
-      querySnapshot.forEach((doc) => {
-        documents.push({ id: doc.id, ...doc.data() });
-      });
-      setNotes(documents);
-    });
-  }, [notes]);
+    const getNotes =  () =>{
+      try{
+      
+         onSnapshot(collection(db, "notes"), (querySnapshot) => {
+          const documents = [];
+          querySnapshot.forEach((doc) => {
+            documents.push({ id: doc.id, ...doc.data() });
+          });
+          setNotes(documents);
+        })
+      }catch(error){
+        console.log(error)
+      }
+    }
+  getNotes()
+    
+  }, []);
 
   const [isVisible, setIsVisible] = useState(false);
 

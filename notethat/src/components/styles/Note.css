@@ -5,11 +5,9 @@
     border-radius: 10px;
     display:flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    align-content: center;
-    width: 25vw;
-    height: 20vh;
+    width: auto;
+    height:min-content;
     margin:1.4vw;
     padding:2vw;
 
@@ -17,11 +15,12 @@
 .note-title{
     color: #20399F;
     font-size: 3vw;
+    margin:0;
 
 }
 .note-information{
-
-
+max-width: 38vw;
+max-height: 13vh;
 }
 .edit-btn,.delete-btn{
     width:9vw;
