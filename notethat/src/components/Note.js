@@ -4,8 +4,9 @@ import { db } from "../firebaseconfig";
 import { Modal } from './Modal';
 import "./styles/Note.css";
 
+
 export const Note = ({ note }) => {
-  const { id, title, information } = note;
+  const { id,title, information,date } = note;
 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -25,6 +26,7 @@ export const Note = ({ note }) => {
   return (
     <div className="card-body">
       <p className="note-title">{title}</p>
+      <p className="note-date">{date}</p>
       <p className="note-information"> {information}</p>
       <div className="card-actions">
         <button className="edit-btn" onClick={showModal}>Edit</button>

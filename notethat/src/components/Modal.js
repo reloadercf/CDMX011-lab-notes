@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import ReactModal from 'react-modal';
 import { db } from '../firebaseconfig';
-import { collection, addDoc, doc, setDoc  } from "firebase/firestore";
+import { collection, addDoc, doc, updateDoc  } from "firebase/firestore";
 import "./styles/Modal.css";
 import { Icon } from '@iconify/react';
+import { useAuth } from "../context/AuthContext";
+
 
 
 const customStyles = {
@@ -21,10 +23,17 @@ const customStyles = {
 };
 
 export const Modal = ({note, mode, isVisible, hideModal }) => {
- const { id, title, information } = note;
+const {currentUid} = useAuth();
+ const {  id, title, information,user } = note;
  const [ newTitle, setNewTitle ] = useState(title);
+ const [ newUser, setNewUser ] = useState(user);
  const [ newInformation, setNewInformation]  = useState(information);
  const [ isOpen, setIsOpen ] = useState(isVisible);
+
+ useEffect(() => {
+    setNewUser(currentUid);
+
+  }, []);
  
 
  const closeModal = () => {
@@ -46,22 +55,25 @@ export const Modal = ({note, mode, isVisible, hideModal }) => {
  const handleInformationChange = (e) => setNewInformation(e.target.value);
 
  const createNote = async () => {
-     try{
-        await addDoc(collection(db, "notes"), {
-            title : newTitle,
-            information : newInformation
-        })
-     }catch(error){
-         console.error(error);
-     }
-     
- }
+    try{
+       await addDoc(collection(db, "notes"), {
+           user:newUser,
+           title : newTitle,
+           date: new Date().toDateString(),
+           information : newInformation
+       })
+    }catch(error){
+        console.error(error);
+    }
+    
+}
 
  const updateNote = async () => {
      try{
-        await setDoc(doc(db, "notes", id), {
+        await updateDoc(doc(db, "notes", id), {
             title : newTitle,
             information : newInformation,
+            date: new Date().toDateString()
           })
      }catch(error){
         console.error(error);

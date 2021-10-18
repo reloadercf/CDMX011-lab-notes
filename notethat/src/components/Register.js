@@ -8,12 +8,11 @@ import google from "../assets/google.png";
 import { useAuth } from "../context/AuthContext";
 
 const Register = () => {
-  const { signup,updateName,loginGoogle } = useAuth();
-  const [error, setError]=useState('null');
+  const { signup,loginGoogle } = useAuth();
+  const [error, setError]=useState('');
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
-  const [displayUserName, setUserName] = useState("");
   const history = useHistory();
 
   const handleRegister = () => {
@@ -45,18 +44,7 @@ console.log('google')
     } 
   };
 
-  const handleUpdate = () => {
-      updateName(displayUserName)
-      .then(() => {
-        console.log("me actualice");
-      })
-      .catch((error) => {
-        setError('Wrong credentials,try again.')
-        console.log(error);
-        console.log("hay un error en la actualizacion");
-      });
-  };
-
+  
 
   return (
     <div className="container">
@@ -72,19 +60,17 @@ console.log('google')
       </div>
       <div className="form-content">
         <h4>Name</h4>
-        <input type="text" onChange={(e) => {
-            setUserName(e.target.value);
-          }}/>
+        <input type="text" />
         <h4>Email</h4>
         <input
-          type="text"
+          type="text" required
           onChange={(e) => {
             setEmail(e.target.value);
           }}
         />
         <h4>Password</h4>
         <input
-          type="password"
+          type="password" required
           onChange={(e) => {
             setPass(e.target.value);
           }}
@@ -97,8 +83,6 @@ console.log('google')
           className="btn-register"
           onClick={() => {
             handleRegister(email, pass,confirmPass);
-            handleUpdate(displayUserName);
-
           }}  
         >
           Registrate

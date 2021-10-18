@@ -3,46 +3,41 @@ import { Note } from "./Note";
 import { Modal } from './Modal';
 import logo from "../assets/logo.png";
 import "./styles/Mynotes.css";
-import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { auth } from "../firebaseconfig";
 import { db } from "../firebaseconfig";
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot,orderBy } from "@firebase/firestore";
 import { Icon } from '@iconify/react';
 
 function Mynotes() {
   const [notes, setNotes] = useState([]);
-  const { currentUser, logout } = useAuth();
-  const history = useHistory();
-
+  const { currentUser,logout } = useAuth();
+ 
   const handleLogout = async () => {
-    try {
-      await logout(auth);
-      history.push("/login");
-      console.log("cerre sesion");
-    } catch (error) {
-      console.log("hay un error");
+    try{
+     await logout()
+    }catch(error){
+      console.log(error)
     }
   };
 
   useEffect(() => {
-    const getNotes =  () =>{
+    const renderNotes = ()=>{
       try{
-      
-         onSnapshot(collection(db, "notes"), (querySnapshot) => {
-          const documents = [];
-          querySnapshot.forEach((doc) => {
-            documents.push({ id: doc.id, ...doc.data() });
-          });
-          setNotes(documents);
-        })
-      }catch(error){
-        console.log(error)
-      }
+        onSnapshot(collection(db, "notes"),orderBy('date','asc'), (querySnapshot) => {
+         const documents = [];
+         querySnapshot.forEach((doc) => {
+           documents.push({ id:doc.id, ...doc.data() });
+         });
+           setNotes(documents);
+       })
+     }catch(error){
+       console.log(error)
+     }
     }
-  getNotes()
-    
+    return renderNotes();
+      
   }, []);
+  
 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -54,9 +49,7 @@ function Mynotes() {
   return (
     <div className="container-mynotes">
       <div className="header">
-        <Link to="/">
           <img src={logo} alt="logo" className="logotype" />
-        </Link>
         <button className="btn-heading-logout" onClick={handleLogout}>
           Log Out
         </button>
@@ -74,9 +67,14 @@ function Mynotes() {
         </div>
      
       <div className="notes-container">
-        {notes.map((note) => (
-          <Note key={note.id} note={note} />
-        ))}
+        {  
+notes.map((note) => (
+  currentUser.uid === note.user ?
+  
+  <Note note={note} key={note.id} /> : console.log('this user has 0 notes')
+  
+))
+}      
       </div>
           {
             isVisible && 

@@ -7,9 +7,10 @@ import facebook from "../assets/facebook.png";
 import google from "../assets/google.png";
 import { useAuth } from "../context/AuthContext";
 
+
 const Login = () => {
-  const { login, loginGoogle } = useAuth();
-  const [error, setError] = useState("null");
+  const { login,loginGoogle } = useAuth();
+  const [error, setError] = useState("");
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const history = useHistory();
@@ -28,15 +29,13 @@ const Login = () => {
   };
 
   const handleGoogle = async () => {
-    try {
-      await loginGoogle();
-      history.push("/mynotes");
-      console.log("google");
-    } catch (error) {
-      console.log("hay un error en google");
-      setError("Wrong credentials,try again.");
-      console.log(error);
-    }
+  try{
+    await loginGoogle()
+    console.log('login google')
+    history.push('/mynotes')
+  }catch(error){
+console.log(error)
+  }
   };
 
   return (
@@ -56,14 +55,14 @@ const Login = () => {
       <div className="form-content">
         <h4>Email</h4>
         <input
-          type="text"
+          type="text" required
           onChange={(e) => {
             setEmail(e.target.value);
           }}
         />
         <h4>Password</h4>
         <input
-          type="password"
+          type="password" required
           onChange={(e) => {
             setPass(e.target.value);
           }}
