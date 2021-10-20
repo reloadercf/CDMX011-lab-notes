@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
-// import { handleCreateAccount } from './lib/auth';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './lib/secret';
 import Paths from './components/Paths';
 
 const App = () => {
-  // eslint-disable-next-line no-unused-vars
   const [isAutenticate, setIsAutenticate] = useState(null);
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setIsAutenticate(user);
+    } else {
+      setIsAutenticate(null);
+    }
+  });
+
   return (
     <BrowserRouter>
       <Paths isAutenticate={isAutenticate} />

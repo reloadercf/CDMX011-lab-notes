@@ -1,4 +1,4 @@
-const Errors = (error) => {
+const errors = (error) => {
   let messageEnd = '';
   switch (error) {
     case 'Password should be at least 6 characters':
@@ -15,4 +15,4 @@ const Errors = (error) => {
   }
   return messageEnd;
 };
-export default Errors;
+export default errors;

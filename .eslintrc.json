@@ -19,6 +19,8 @@
     ],
     "rules": {
         "react/jsx-filename-extension": "off",
-        "react/react-in-jsx-scope": "off"
+        "react/react-in-jsx-scope": "off",
+        "react/forbid-prop-types": "off",
+        "import/no-extraneous-dependencies": "off"
     }
 }

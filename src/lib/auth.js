@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { auth } from './secret';
 
 export const handleCreateAccount = (email, password) => {
@@ -30,4 +30,12 @@ export const handleLogin = (email, password) => {
       const errorMessage = error.message;
       console.log(errorMessage, errorCode);
     });
+};
+
+export const handleLogout = () => {
+  signOut(auth).then(() => {
+    console.log('sesion cerrada');
+  }).catch((error) => {
+    console.log(error);
+  });
 };
