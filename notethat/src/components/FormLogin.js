@@ -3,8 +3,8 @@ import line from "../assets/line-form.png";
 import google from "../assets/google.png";
 
  const FormLogin = ({handleLogin,handleGoogle}) => {
-    const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
+   const [email, setEmail] = useState("");
+   const [pass, setPass] = useState("");
 
     return (
         <div className="form-content">

@@ -26,10 +26,9 @@ export const Modal = ({note, mode, isVisible, hideModal }) => {
 const {currentUid} = useAuth();
  const {  id, title, information } = note;
  const [ newTitle, setNewTitle ] = useState(title);
- const [ user ] = useState(currentUid);
  const [ newInformation, setNewInformation]  = useState(information);
+ const [ user ] = useState(currentUid);
  const [ isOpen, setIsOpen ] = useState(isVisible);
-
 
  const closeModal = () => {
      setIsOpen(false);
