@@ -10,14 +10,14 @@ import feather from "../assets/logo-feather.png";
 function Home() {
   return (
     <div className="container-home">
-    <div className="header-home">
+    <header className="header-home">
         <Link to="/"><img src={logo} alt="logo" className="logotype" /></Link>
         <Link to="/register">
       <button className="btn-heading-signup"> Sign Up 
       </button ></Link>
       <Link to="/login" ><button className="btn-heading-login" > Log In 
       </button></Link>
-    </div>
+    </header>
     <div className="home-title">
       <h1 className="title-home">Don’t loose <span className="that-span">that</span> great idea.</h1>
       <p className="slogan-home">

@@ -11,7 +11,7 @@ import google from "../assets/google.png";
     return (
         <div className="form-content">
         <h4>Name</h4>
-        <input type="text" />
+        <input type="text" placeholder="Your Name" />
         <h4>Email</h4>
         <input
           type="text" required placeholder="example@example.com"

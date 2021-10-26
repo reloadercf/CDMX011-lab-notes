@@ -11,6 +11,7 @@ export const Note = ({ note }) => {
   const { id,title, information,date } = note;
 
   const [isVisible, setIsVisible] = useState(false);
+  
 
   
   
@@ -47,6 +48,7 @@ export const Note = ({ note }) => {
     <div className="card-body" >
       <p className="note-title">{title}</p>
        <p className='note-information'>{information}</p> 
+      
      <div className="card-actions" >
       <p className="note-date"><span className='date-label'>Last Mod. </span>{date}</p>
         <button className="edit-btn" onClick={showModal}><Icon icon="eva:edit-2-fill" color="#20399f" height="25" /></button>
