@@ -12,10 +12,10 @@ export function App() {
         <h1>Esta es mi primera App de React uwu!!</h1>
       </div>
       <Switch> 
-        <Route path='/' component={Home}/>
+        <Route path='/' component={Home} exact/>
         <Route path='/login' component={Login}/>
         <Route path='/register' component={Register}/>
-      </Switch>
+      </Switch> 
     </BrowserRouter>
   );
 }
