@@ -1,8 +1,10 @@
 const Home = () => {
   return (
     <>
-      <button>Login</button>
-      <button>Registro</button>
+      <div id="home">
+        <button>Login</button>
+        <button>Registro</button>
+      </div>
     </>
   );
 };
