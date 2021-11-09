@@ -1,4 +1,6 @@
-const Login = () => {
+import "../styles/home.css";
+
+export function Login() {
   return (
     <>
       <form id="login">
@@ -9,6 +11,4 @@ const Login = () => {
       </form>
     </>
   );
-};
-
-export default Login;
+}

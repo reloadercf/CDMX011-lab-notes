@@ -1,4 +1,6 @@
-const Register = () => {
+import "../styles/home.css";
+
+export function Register() {
   return (
     <>
       <form id="register">
@@ -11,6 +13,4 @@ const Register = () => {
       </form>
     </>
   );
-};
-
-export default Register;
+}
