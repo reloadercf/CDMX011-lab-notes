@@ -9,6 +9,7 @@ export function Login() {
   const [password, setPassword] = useState("");
 
   const emailLoginBtn = (e) => {
+    e.preventDefault();
     emailLogin(email, password)
       .then(() => {
         console.log("Esto funciona, iniciamos sesión");
@@ -20,6 +21,7 @@ export function Login() {
   };
 
   const gmailLoginBtn = (e) => {
+    e.preventDefault();
     logInWithGoogle()
       .then(() => {
         console.log("Esto funciona, iniciamos sesión");
