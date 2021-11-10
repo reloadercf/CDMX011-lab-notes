@@ -3,12 +3,12 @@ import "firebase/auth";
 import "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBVJTi79xXeIA8aDluI0lSe-UHgOlKalwo",
-  authDomain: "daily-jounal.firebaseapp.com",
-  projectId: "daily-jounal",
-  storageBucket: "daily-jounal.appspot.com",
-  messagingSenderId: "809152786591",
-  appId: "1:809152786591:web:4dbe2c15d2409bdc22b2aa",
+  apiKey: "AIzaSyBX2aq8YzZfn0UHza3VcgLVUHemHhEKSLc",
+  authDomain: "daily-journal-bd158.firebaseapp.com",
+  projectId: "daily-journal-bd158",
+  storageBucket: "daily-journal-bd158.appspot.com",
+  messagingSenderId: "489365538960",
+  appId: "1:489365538960:web:899464486d293a52deb015",
 };
 
 firebase.initializeApp(firebaseConfig);
