@@ -14,7 +14,7 @@ export function Register() {
     e.preventDefault();
     emailRegister(email, password)
       .then(() => {
-        console.log("Esto funciona, iniciamos sesión");
+        console.log("Esto funciona, nos hemos registrado como usuarios");
         history.push("/login");
       })
       .catch((error) => {
@@ -52,7 +52,7 @@ export function Register() {
           type="password"
           placeholder="Contraseña"
         ></input>
-        <input placeholder="Confirma tu contraseña"></input>
+        <input type="password" placeholder="Confirma tu contraseña"></input>
         <button onClick={emailRegisterBtn}>Ingresar</button>
         <button onClick={gmailLoginBtn}>Ingresar con Google</button>
       </form>

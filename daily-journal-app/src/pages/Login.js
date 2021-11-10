@@ -8,12 +8,14 @@ export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const history = useHistory();
+
   const emailLoginBtn = (e) => {
     e.preventDefault();
     emailLogin(email, password)
       .then(() => {
         console.log("Esto funciona, iniciamos sesión");
-        useHistory.push("/notes");
+        history.push("/notes");
       })
       .catch((error) => {
         console.log("Hola, no iniciamos sesión");
@@ -25,7 +27,7 @@ export function Login() {
     logInWithGoogle()
       .then(() => {
         console.log("Esto funciona, iniciamos sesión");
-        useHistory.push("/notes");
+        history.push("/notes");
       })
       .catch(() => {
         console.log("Hola, no iniciamos sesión");
