@@ -1,13 +1,16 @@
-import { useState } from "react";
-import { logOut } from "../lib/auth";
-import { saveNotes } from "../lib/firestore";
+import { useState, useEffect } from "react";
+import { logOut } from "../lib/auth.js";
+import { saveNotes, deleteNotes } from "../lib/firestore.js";
 import { useHistory } from "react-router-dom";
+import Note from "./Note.js";
 
 import "../styles/notes.css";
+import { db } from "../lib/secret.js";
 
 export function Notes() {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
+  const [notes, setNotes] = useState([]);
 
   const history = useHistory();
 
@@ -23,6 +26,21 @@ export function Notes() {
     logOut();
     history.push("/login");
   };
+
+  const getNotes = () => {
+    db.collection("Notes").onSnapshot((data) => {
+      const docs = [];
+      data.forEach((doc) => {
+        docs.push({ ...doc.data(), id: doc.id });
+      });
+      setNotes(docs);
+      console.log(docs);
+    });
+  };
+
+  useEffect(() => {
+    getNotes();
+  }, []);
 
   return (
     <>
@@ -44,6 +62,15 @@ export function Notes() {
           Publicar
         </button>
       </form>
+      <br />
+      <div>
+        <p>Aqui deberia aparecer el muro</p>
+        <div>
+          {notes.map((notes) => (
+            <Note notes={notes} key={notes.id} deleteNotes={deleteNotes} />
+          ))}
+        </div>
+      </div>
     </>
   );
 }
