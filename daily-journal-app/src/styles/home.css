@@ -19,6 +19,7 @@ h1 {
 
 #home {
   display: flex;
+  height: 600px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -29,9 +30,9 @@ button {
   border-radius: 25px;
   border: none;
   font-family: "Montserrat", sans-serif;
-  font-size: 18px;
-  width: 350px;
-  height: 80px;
+  font-size: 32px;
+  width: 400px;
+  height: 100px;
   margin: 20px;
   padding: 10px;
 }
@@ -46,8 +47,8 @@ button {
 input {
   margin: 1.2em;
   padding: 1.5em;
-  width: 25em;
-  height: 6em;
+  width: 32em;
+  height: 7em;
   border-radius: 0.5em;
   border: none;
   background-color: #abd7f8;

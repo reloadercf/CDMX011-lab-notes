@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { logOut } from "../lib/auth";
 import { saveNotes } from "../lib/firestore";
+import { useHistory } from "react-router-dom";
 
 import "../styles/notes.css";
 
 export function Notes() {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
+
+  const history = useHistory();
 
   const submitNote = (e) => {
     e.preventDefault();
@@ -15,9 +18,15 @@ export function Notes() {
     );
   };
 
+  const logoutBtn = (e) => {
+    e.preventDefault();
+    logOut();
+    history.push("/login");
+  };
+
   return (
     <>
-      <button onClick={logOut}>Cerrar sesión</button>
+      <button onClick={logoutBtn}>Cerrar sesión</button>
       <form>
         <input
           onChange={(e) => {
