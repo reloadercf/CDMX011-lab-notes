@@ -10,7 +10,13 @@ const PrintNote = ({ isAuthenticate, useGetNote }) => {
   return (
     <div>
       Notas
-      {notes ? notes.map((note) => <NoteWall data={note.data} key={note.id} />) : null}
+      {notes ? notes.map((note) => (
+        <NoteWall
+          data={note.data}
+          idDoc={note.id}
+          key={note.id}
+        />
+      )) : null}
     </div>
   );
 };

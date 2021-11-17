@@ -1,17 +1,23 @@
 import PropTypes from 'prop-types';
 
-const NoteWall = ({ data }) => {
-  const { text, id } = data;
+import DeleteNote from './DeleteNote';
+
+import { handleDeleteNote } from '../../../lib/notes';
+
+const NoteWall = ({ data, idDoc }) => {
+  const { text } = data;
   return (
-    <div id={id}>
+    <div>
       <p>
         {text}
       </p>
+      <DeleteNote idDoc={idDoc} handleDeleteNote={handleDeleteNote} />
     </div>
   );
 };
 
 NoteWall.propTypes = {
   data: PropTypes.object.isRequired,
+  idDoc: PropTypes.string.isRequired,
 };
 export default NoteWall;
