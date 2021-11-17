@@ -4,9 +4,9 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
-import Note from './autenticate/Note';
-import Login from './noautenticate/Login';
-import Signup from './noautenticate/Signup';
+import Note from './Authenticate/Note';
+import Login from './NoAuthenticate/Login';
+import Signup from './NoAuthenticate/Signup';
 import { handleLogin } from '../lib/auth';
 import { handleAddNote, useGetNote } from '../lib/notes';
 
