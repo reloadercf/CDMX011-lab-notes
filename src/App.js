@@ -6,19 +6,19 @@ import { auth } from './lib/secret';
 import Paths from './components/Paths';
 
 const App = () => {
-  const [isAutenticate, setIsAutenticate] = useState(null);
+  const [isAuthenticate, setIsAuthenticate] = useState(null);
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      setIsAutenticate(user);
+      setIsAuthenticate(user);
     } else {
-      setIsAutenticate(null);
+      setIsAuthenticate(null);
     }
   });
 
   return (
     <BrowserRouter>
-      <Paths isAutenticate={isAutenticate} />
+      <Paths isAuthenticate={isAuthenticate} />
     </BrowserRouter>
   );
 };

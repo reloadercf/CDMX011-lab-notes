@@ -1,18 +1,21 @@
 import PropTypes from 'prop-types';
 import AddNote from './AddNote';
 import Logout from './Logout';
+import PrintNote from './PrintNote/PrintNote';
 
-const Note = ({ isAutenticate, handleAddNote }) => (
+const Note = ({ isAuthenticate, handleAddNote, useGetNote }) => (
   <div>
     Bienvenido
     <Logout />
-    <AddNote isAutenticate={isAutenticate} handleAddNote={handleAddNote} />
+    <AddNote isAuthenticate={isAuthenticate} handleAddNote={handleAddNote} />
+    <PrintNote isAuthenticate={isAuthenticate} useGetNote={useGetNote} />
   </div>
 );
 
 Note.propTypes = {
-  isAutenticate: PropTypes.object.isRequired,
+  isAuthenticate: PropTypes.object.isRequired,
   handleAddNote: PropTypes.func.isRequired,
+  useGetNote: PropTypes.func.isRequired,
 };
 
 export default Note;

@@ -8,16 +8,17 @@ import Note from './autenticate/Note';
 import Login from './noautenticate/Login';
 import Signup from './noautenticate/Signup';
 import { handleLogin } from '../lib/auth';
-import { handleAddNote } from '../lib/notes';
+import { handleAddNote, useGetNote } from '../lib/notes';
 
-const Paths = ({ isAutenticate }) => (
+const Paths = ({ isAuthenticate }) => (
   <div>
-    {isAutenticate ? (
+    {isAuthenticate ? (
       <Switch>
         <Route exact path="/">
           <Note
-            isAutenticate={isAutenticate}
+            isAuthenticate={isAuthenticate}
             handleAddNote={handleAddNote}
+            useGetNote={useGetNote}
           />
         </Route>
       </Switch>
