@@ -1,7 +1,7 @@
 function Note({ notes, deleteNotes }) {
   return (
-    <div className="card">
-      <div className="card-body">
+    <div className="container-notes">
+      <div className="container-post">
         <h4>{notes.title}</h4>
         <p>{notes.text}</p>
         <div className="container-btns">

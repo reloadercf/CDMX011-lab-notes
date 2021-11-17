@@ -64,3 +64,32 @@ input {
   justify-content: center;
   align-items: center;
 }
+
+.input-note {
+  display: flex;
+  margin: 2em;
+  padding: 3em;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container-notes {
+  display: flex;
+  justify-content: center;
+}
+
+.container-post {
+  display: flex;
+  margin: 2em;
+  padding: 3em;
+  flex-direction: column;
+  justify-content: center;
+  border-style: solid;
+  border-color: violet;
+  border-radius: 25px;
+}
+
+.container-btn {
+  display: flex;
+  justify-content: center;
+}
