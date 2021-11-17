@@ -3,19 +3,31 @@ import AddNote from './AddNote';
 import Logout from './Logout';
 import PrintNote from './PrintNote/PrintNote';
 
-const Note = ({ isAuthenticate, handleAddNote, useGetNote }) => (
+const Note = ({
+  isAuthenticate, handleAddNote, useGetNotes, handleDeleteNote,
+}) => (
   <div>
     Bienvenido
     <Logout />
-    <AddNote isAuthenticate={isAuthenticate} handleAddNote={handleAddNote} />
-    <PrintNote isAuthenticate={isAuthenticate} useGetNote={useGetNote} />
+
+    <AddNote
+      isAuthenticate={isAuthenticate}
+      handleAddNote={handleAddNote}
+    />
+
+    <PrintNote
+      isAuthenticate={isAuthenticate}
+      useGetNotes={useGetNotes}
+      handleDeleteNote={handleDeleteNote}
+    />
   </div>
 );
 
 Note.propTypes = {
   isAuthenticate: PropTypes.object.isRequired,
   handleAddNote: PropTypes.func.isRequired,
-  useGetNote: PropTypes.func.isRequired,
+  useGetNotes: PropTypes.func.isRequired,
+  handleDeleteNote: PropTypes.func.isRequired,
 };
 
 export default Note;

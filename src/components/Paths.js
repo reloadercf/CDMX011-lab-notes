@@ -10,9 +10,12 @@ import PropTypes from 'prop-types';
 import Note from './Authenticate/Note';
 import Login from './NoAuthenticate/Login';
 import Signup from './NoAuthenticate/Signup';
+import EditNote from './Authenticate/EditNote';
 
 import { handleLogin } from '../lib/auth';
-import { handleAddNote, useGetNote } from '../lib/notes';
+import {
+  handleAddNote, useGetNotes, handleDeleteNote, handleGetNote, handleEditNote,
+} from '../lib/notes';
 
 const Paths = ({ isAuthenticate }) => (
   <div>
@@ -22,7 +25,14 @@ const Paths = ({ isAuthenticate }) => (
           <Note
             isAuthenticate={isAuthenticate}
             handleAddNote={handleAddNote}
-            useGetNote={useGetNote}
+            useGetNotes={useGetNotes}
+            handleDeleteNote={handleDeleteNote}
+          />
+        </Route>
+        <Route exact path="/edit/:idDoc">
+          <EditNote
+            handleGetNote={handleGetNote}
+            handleEditNote={handleEditNote}
           />
         </Route>
       </Switch>

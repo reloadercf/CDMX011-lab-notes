@@ -1,17 +1,25 @@
 import PropTypes from 'prop-types';
 
-import DeleteNote from './DeleteNote';
+import { Link } from 'react-router-dom';
 
-import { handleDeleteNote } from '../../../lib/notes';
-
-const NoteWall = ({ data, idDoc }) => {
+const NoteWall = ({ data, idDoc, handleDeleteNote }) => {
   const { text } = data;
   return (
     <div>
       <p>
         {text}
       </p>
-      <DeleteNote idDoc={idDoc} handleDeleteNote={handleDeleteNote} />
+      <Link to={`/edit/${idDoc}`}>
+        <button type="button">Editar</button>
+      </Link>
+      <button
+        type="button"
+        onClick={() => {
+          handleDeleteNote(idDoc);
+        }}
+      >
+        Borrar
+      </button>
     </div>
   );
 };
@@ -19,5 +27,6 @@ const NoteWall = ({ data, idDoc }) => {
 NoteWall.propTypes = {
   data: PropTypes.object.isRequired,
   idDoc: PropTypes.string.isRequired,
+  handleDeleteNote: PropTypes.func.isRequired,
 };
 export default NoteWall;

@@ -4,17 +4,18 @@ import PropTypes from 'prop-types';
 
 import NoteWall from './NoteWall';
 
-const PrintNote = ({ isAuthenticate, useGetNote }) => {
-  const notes = useGetNote(isAuthenticate.uid);
+const PrintNote = ({ isAuthenticate, useGetNotes, handleDeleteNote }) => {
+  const notes = useGetNotes(isAuthenticate.uid);
 
   return (
     <div>
       Notas
       {notes ? notes.map((note) => (
         <NoteWall
+          key={note.id}
           data={note.data}
           idDoc={note.id}
-          key={note.id}
+          handleDeleteNote={handleDeleteNote}
         />
       )) : null}
     </div>
@@ -23,7 +24,8 @@ const PrintNote = ({ isAuthenticate, useGetNote }) => {
 
 PrintNote.propTypes = {
   isAuthenticate: PropTypes.object.isRequired,
-  useGetNote: PropTypes.func.isRequired,
+  useGetNotes: PropTypes.func.isRequired,
+  handleDeleteNote: PropTypes.func.isRequired,
 };
 
 export default PrintNote;
