@@ -1,12 +1,16 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+
 import {
   Switch,
   Route,
 } from 'react-router-dom';
+
+import PropTypes from 'prop-types';
+
 import Note from './Authenticate/Note';
 import Login from './NoAuthenticate/Login';
 import Signup from './NoAuthenticate/Signup';
+
 import { handleLogin } from '../lib/auth';
 import { handleAddNote, useGetNote } from '../lib/notes';
 
@@ -34,5 +38,13 @@ const Paths = ({ isAuthenticate }) => (
     )}
   </div>
 );
+
+Paths.propTypes = {
+  isAuthenticate: PropTypes.object,
+};
+
+Paths.defaultProps = {
+  isAuthenticate: null,
+};
 
 export default Paths;
