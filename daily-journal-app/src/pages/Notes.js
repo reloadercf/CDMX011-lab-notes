@@ -45,7 +45,7 @@ export function Notes() {
   return (
     <>
       <button onClick={logoutBtn}>Cerrar sesión</button>
-      <form>
+      <div className="input-note">
         <input
           onChange={(e) => {
             setTitle(e.target.value);
@@ -61,15 +61,12 @@ export function Notes() {
         <button onClick={submitNote} type="submit">
           Publicar
         </button>
-      </form>
+      </div>
       <br />
       <div>
-        <p>Aqui deberia aparecer el muro</p>
-        <div>
-          {notes.map((notes) => (
-            <Note notes={notes} key={notes.id} deleteNotes={deleteNotes} />
-          ))}
-        </div>
+        {notes.map((notes) => (
+          <Note notes={notes} key={notes.id} deleteNotes={deleteNotes} />
+        ))}
       </div>
     </>
   );

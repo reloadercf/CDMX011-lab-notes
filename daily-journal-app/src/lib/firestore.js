@@ -6,12 +6,12 @@ export const saveNotes = (title, text) =>
     text,
   });
 
-export const deleteNotes = (id) => db.collection("notes").doc(`${id}`).delete();
-export const showNotes = (data) => db.collection("notes").onSnapshot(data);
+export const deleteNotes = (id) => db.collection("Notes").doc(id).delete();
+export const showNotes = () => db.collection("Notes");
 
 export const editNotes = (id, updatedData) =>
   db.collection("notes").doc(id).update({
     text: updatedData,
   });
 
-export const getNotes = () => db.collection("notes");
+export const getNotes = () => db.collection("Notes");
