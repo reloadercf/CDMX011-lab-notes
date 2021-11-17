@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import {
-  collection, addDoc, serverTimestamp, onSnapshot, query, where,
+  collection, addDoc, serverTimestamp, onSnapshot, query, where, orderBy,
 } from 'firebase/firestore';
 
 import { db } from './secret';
@@ -19,7 +19,7 @@ export const useGetNote = (user) => {
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
-    const q = query(collection(db, 'notes'), where('user', '==', user));
+    const q = query(collection(db, 'notes'), where('user', '==', user), orderBy('data_update', 'desc'));
     onSnapshot(q, (querySnapshot) => {
       const allNotes = [];
       querySnapshot.forEach((doc) => {
