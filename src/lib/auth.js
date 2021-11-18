@@ -7,6 +7,7 @@ export const handleCreateAccount = (email, password) => {
     // Signed in
       const { user } = userCredential;
       console.log(user);
+      setTimeout(() => { window.location.href = '/'; }, 500);
     // ...
     })
     .catch((error) => {

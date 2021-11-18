@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {
   Switch,
   Route,
@@ -12,7 +10,7 @@ import Login from './NoAuthenticate/Login';
 import Signup from './NoAuthenticate/Signup';
 import EditNote from './Authenticate/EditNote';
 
-import { handleLogin } from '../lib/auth';
+import { handleLogin, handleCreateAccount } from '../lib/auth';
 import {
   handleAddNote, useGetNotes, handleDeleteNote, handleGetNote, handleEditNote,
 } from '../lib/notes';
@@ -42,7 +40,7 @@ const Paths = ({ isAuthenticate }) => (
           <Login handleLogin={handleLogin} />
         </Route>
         <Route exact path="/signup">
-          <Signup />
+          <Signup handleCreateAccount={handleCreateAccount} />
         </Route>
       </Switch>
     )}
