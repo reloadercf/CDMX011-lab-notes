@@ -36,18 +36,18 @@ const NoteWall = ({ data, idDoc, handleDeleteNote }) => {
     <div style={noteStyle}>
       <div style={dateStyle}>
         Modificado:
-        {data_update.toDate().toDateString()}
+        {data_update && data_update.toDate().toDateString()}
         -
-        {data_update.toDate().toLocaleTimeString('es-MX')}
+        {data_update && data_update.toDate().toLocaleTimeString('es-MX')}
       </div>
       <p>
         {text}
       </p>
       <div className="date">
         Creada:
-        {data_create.toDate().toDateString()}
+        {data_create && data_create.toDate().toDateString()}
         -
-        {data_create.toDate().toLocaleTimeString('es-MX')}
+        {data_create && data_create.toDate().toLocaleTimeString('es-MX')}
       </div>
       <div>
         <Link to={`/edit/${idDoc}`}>
