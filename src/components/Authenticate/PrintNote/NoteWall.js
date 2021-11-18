@@ -3,12 +3,38 @@ import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 
+const noteStyle = {
+  backgroundColor: '#ffffff',
+  width: '80vw',
+  height: 'auto',
+  marginBottom: '15px',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-around',
+  padding: '10px',
+};
+
+const dateStyle = {
+  fontSize: '15px',
+  color: 'darkgrey',
+  width: '100vw',
+  display: 'flex',
+  justifyContent: 'center',
+};
+
+const btnStyle = {
+  backgroundColor: '#ffffff',
+  color: '#0A97FF',
+  border: '1px solid #0A97FF',
+  marginRight: '30px',
+};
+
 const NoteWall = ({ data, idDoc, handleDeleteNote }) => {
   const { text, data_update, data_create } = data;
 
   return (
-    <div className="note">
-      <div className="date">
+    <div style={noteStyle}>
+      <div style={dateStyle}>
         Modificado:
         {data_update.toDate().toDateString()}
         -
@@ -25,14 +51,14 @@ const NoteWall = ({ data, idDoc, handleDeleteNote }) => {
       </div>
       <div>
         <Link to={`/edit/${idDoc}`}>
-          <button type="button" className="btn-note">Editar</button>
+          <button type="button" style={btnStyle}>Editar</button>
         </Link>
         <button
           type="button"
           onClick={() => {
             handleDeleteNote(idDoc);
           }}
-          className="btn-note"
+          style={btnStyle}
         >
           Borrar
         </button>

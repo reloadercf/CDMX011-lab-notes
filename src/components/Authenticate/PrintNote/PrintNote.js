@@ -4,15 +4,26 @@ import PropTypes from 'prop-types';
 
 import NoteWall from './NoteWall';
 
-import './style.css';
+const pBlue = {
+  color: '#0A97FF',
+  paddingLeft: '30px',
+};
+
+const containerStyle = {
+  width: '100vw',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-end',
+  marginLeft: '-50px',
+};
 
 const PrintNote = ({ isAuthenticate, useGetNotes, handleDeleteNote }) => {
   const notes = useGetNotes(isAuthenticate.uid);
 
   return (
     <div>
-      <p className="text-blue">Mis Notas: </p>
-      <div className="container-notes">
+      <p style={pBlue}>Mis Notas: </p>
+      <div style={containerStyle}>
         {notes ? notes.map((note) => (
           <NoteWall
             key={note.id}
