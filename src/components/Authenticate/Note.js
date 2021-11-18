@@ -1,15 +1,11 @@
 import PropTypes from 'prop-types';
 import AddNote from './AddNote';
-import Logout from './Logout';
 import PrintNote from './PrintNote/PrintNote';
 
 const Note = ({
   isAuthenticate, handleAddNote, useGetNotes, handleDeleteNote,
 }) => (
   <div>
-    Bienvenido
-    <Logout />
-
     <AddNote
       isAuthenticate={isAuthenticate}
       handleAddNote={handleAddNote}

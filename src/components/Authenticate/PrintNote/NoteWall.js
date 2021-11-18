@@ -1,25 +1,42 @@
+/* eslint-disable camelcase */
 import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 
 const NoteWall = ({ data, idDoc, handleDeleteNote }) => {
-  const { text } = data;
+  const { text, data_update, data_create } = data;
+
   return (
-    <div>
+    <div className="note">
+      <div className="date">
+        Modificado:
+        {data_update.toDate().toDateString()}
+        -
+        {data_update.toDate().toLocaleTimeString('es-MX')}
+      </div>
       <p>
         {text}
       </p>
-      <Link to={`/edit/${idDoc}`}>
-        <button type="button">Editar</button>
-      </Link>
-      <button
-        type="button"
-        onClick={() => {
-          handleDeleteNote(idDoc);
-        }}
-      >
-        Borrar
-      </button>
+      <div className="date">
+        Creada:
+        {data_create.toDate().toDateString()}
+        -
+        {data_create.toDate().toLocaleTimeString('es-MX')}
+      </div>
+      <div>
+        <Link to={`/edit/${idDoc}`}>
+          <button type="button" className="btn-note">Editar</button>
+        </Link>
+        <button
+          type="button"
+          onClick={() => {
+            handleDeleteNote(idDoc);
+          }}
+          className="btn-note"
+        >
+          Borrar
+        </button>
+      </div>
     </div>
   );
 };

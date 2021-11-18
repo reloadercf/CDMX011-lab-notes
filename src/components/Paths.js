@@ -9,14 +9,16 @@ import Note from './Authenticate/Note';
 import Login from './NoAuthenticate/Login';
 import Signup from './NoAuthenticate/Signup';
 import EditNote from './Authenticate/EditNote';
+import NavBar from './NavBar';
 
-import { handleLogin, handleCreateAccount } from '../lib/auth';
+import { handleLogin, handleCreateAccount, handleLogout } from '../lib/auth';
 import {
   handleAddNote, useGetNotes, handleDeleteNote, handleGetNote, handleEditNote,
 } from '../lib/notes';
 
 const Paths = ({ isAuthenticate }) => (
-  <div>
+  <div className="component">
+    <NavBar isAuthenticate={isAuthenticate} handleLogout={handleLogout} />
     {isAuthenticate ? (
       <Switch>
         <Route exact path="/">
