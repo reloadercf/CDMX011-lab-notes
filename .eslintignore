@@ -1,3 +1,10 @@
 index.js
 reportWebVitals.js
 auth.js
+NavBar.test.js
+CreateNote.test.js
+ReadNote.test.js
+UpdateNote.test.js
+DeleteNote.test.js
+Login.test.js
+Signup.test.js
