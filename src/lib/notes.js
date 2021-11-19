@@ -44,9 +44,7 @@ export const handleGetNote = async (idDoc) => {
   return null;
 };
 
-export const handleEditNote = async (idDoc, text) => {
-  await updateDoc(doc(db, 'notes', idDoc), {
-    text,
-    data_update: serverTimestamp(),
-  });
-};
+export const handleEditNote = async (idDoc, text) => updateDoc(doc(db, 'notes', idDoc), {
+  text,
+  data_update: serverTimestamp(),
+});

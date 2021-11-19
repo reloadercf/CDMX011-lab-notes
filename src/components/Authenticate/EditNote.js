@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 
-import { Link, useParams, Redirect } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
@@ -51,6 +51,7 @@ const buttonsStyle = {
 const EditNote = ({ handleGetNote, handleEditNote }) => {
   const [note, setNote] = useState('');
   const { idDoc } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     handleGetNote(idDoc)
@@ -64,8 +65,9 @@ const EditNote = ({ handleGetNote, handleEditNote }) => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          handleEditNote(idDoc, note);
-          setTimeout(() => { window.location.href = '/'; }, 500);
+          handleEditNote(idDoc, note).then(() => {
+            history.push('/');
+          });
         }}
         style={formStyle}
       >
