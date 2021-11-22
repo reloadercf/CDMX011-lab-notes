@@ -4,7 +4,7 @@ import { saveNotes, deleteNotes } from "../lib/firestore.js";
 import { useHistory } from "react-router-dom";
 import Note from "./Note.js";
 
-import "../styles/notes.css";
+import "../styles/home.css";
 import { db } from "../lib/secret.js";
 
 export function Notes() {
