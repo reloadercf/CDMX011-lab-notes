@@ -19,14 +19,14 @@ h1 {
 
 #home {
   display: flex;
-  height: 600px;
+  height: 40rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-button {
-  background: #b08bfb;
+.log-button {
+  background: #a55eea;
   border-radius: 25px;
   border: none;
   height: 5rem;
@@ -44,11 +44,11 @@ button {
   align-items: center;
 }
 
-input {
+.log-input {
   margin: 1.2em;
   padding: 1.5em;
-  width: 32em;
-  height: 7em;
+  width: 26rem;
+  height: 5rem;
   border-radius: 0.5em;
   border: none;
   background-color: #abd7f8;

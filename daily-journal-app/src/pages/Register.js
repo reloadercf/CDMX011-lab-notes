@@ -36,6 +36,9 @@ export function Register() {
 
   return (
     <>
+    <div>
+        <h1>Daily Journal</h1>
+      </div>
       <form id="register">
         <input
           onChange={(e) => {
@@ -43,22 +46,24 @@ export function Register() {
           }}
           type="email"
           placeholder="Email"
+          className="log-input"
         ></input>
-        <input placeholder="Confirma tu email"></input>
+        <input placeholder="Confirma tu email" className="log-input"></input>
         <input
           onChange={(e) => {
             setPassword(e.target.value);
           }}
           type="password"
           placeholder="Contraseña"
+          className="log-input"
         ></input>
-        <input type="password" placeholder="Confirma tu contraseña"></input>
-        <button onClick={emailRegisterBtn}>Ingresar</button>
-        <button onClick={gmailLoginBtn}>Ingresar con Google</button>
-      </form>
-      <p>
+        <input type="password" placeholder="Confirma tu contraseña" className="log-input"></input>
+        <button onClick={emailRegisterBtn} className="log-button">Ingresar</button>
+        <button onClick={gmailLoginBtn} className="log-button">Ingresar con Google</button>
+        <p>
         <Link to="/login">¿Ya tienes cuenta? Ingresa.</Link>
       </p>
+      </form>
     </>
   );
 }

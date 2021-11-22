@@ -9,9 +9,6 @@ import { Notes } from '../pages/Notes';
 export function App() {
   return (
     <BrowserRouter>
-      <div>
-        <h1>Daily Journal</h1>
-      </div>
       <Switch> 
         <Route path='/' component={Home} exact/>
         <Route path='/login' component={Login}/>
