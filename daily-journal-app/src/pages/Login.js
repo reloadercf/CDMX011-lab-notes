@@ -36,6 +36,9 @@ export function Login() {
 
   return (
     <>
+    <div>
+        <h1>Daily Journal</h1>
+      </div>
       <form id="login">
         <input
           onChange={(e) => {
@@ -43,6 +46,7 @@ export function Login() {
           }}
           type="email"
           placeholder="Email"
+          className="log-input"
         ></input>
         <input
           onChange={(e) => {
@@ -50,15 +54,16 @@ export function Login() {
           }}
           type="password"
           placeholder="Contraseña"
+          className="log-input"
         ></input>
-        <button onClick={emailLoginBtn} type="submit">
+        <button onClick={emailLoginBtn} type="submit" className="log-button">
           Ingresar
         </button>
-        <button onClick={gmailLoginBtn}>Ingresar con Google</button>
-      </form>
-      <p>
+        <button onClick={gmailLoginBtn} className="log-button">Ingresar con Google</button>
+        <p>
         <Link to="/register">¿No tienes cuenta? Regístrate.</Link>
       </p>
+      </form>
     </>
   );
 }
