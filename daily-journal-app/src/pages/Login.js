@@ -60,7 +60,7 @@ export function Login() {
           Ingresar
         </button>
         <button onClick={gmailLoginBtn} className="log-button">Ingresar con Google</button>
-        <p>
+        <p className="log-link">
         <Link to="/register">¿No tienes cuenta? Regístrate.</Link>
       </p>
       </form>
