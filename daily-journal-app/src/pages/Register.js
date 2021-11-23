@@ -48,7 +48,6 @@ export function Register() {
           placeholder="Email"
           className="log-input"
         ></input>
-        <input placeholder="Confirma tu email" className="log-input"></input>
         <input
           onChange={(e) => {
             setPassword(e.target.value);
@@ -60,7 +59,7 @@ export function Register() {
         <input type="password" placeholder="Confirma tu contraseña" className="log-input"></input>
         <button onClick={emailRegisterBtn} className="log-button">Ingresar</button>
         <button onClick={gmailLoginBtn} className="log-button">Ingresar con Google</button>
-        <p>
+        <p className="log-link">
         <Link to="/login">¿Ya tienes cuenta? Ingresa.</Link>
       </p>
       </form>
