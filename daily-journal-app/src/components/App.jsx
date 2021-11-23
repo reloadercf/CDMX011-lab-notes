@@ -6,6 +6,7 @@ import { Login }  from '../pages/Login';
 import { Register } from '../pages/Register';
 import { Notes } from '../pages/Notes';
 
+// función que renderiza componentes
 export function App() {
   return (
     <BrowserRouter>
