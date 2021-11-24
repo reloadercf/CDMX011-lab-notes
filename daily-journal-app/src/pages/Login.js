@@ -36,7 +36,7 @@ export function Login() {
 
   return (
     <>
-    <div>
+      <div>
         <h1>Daily Journal</h1>
       </div>
       <form id="login">
@@ -59,10 +59,12 @@ export function Login() {
         <button onClick={emailLoginBtn} type="submit" className="log-button">
           Ingresar
         </button>
-        <button onClick={gmailLoginBtn} className="log-button">Ingresar con Google</button>
+        <button onClick={gmailLoginBtn} className="log-button">
+          Ingresar con Google
+        </button>
         <p className="log-link">
-        <Link to="/register">¿No tienes cuenta? Regístrate.</Link>
-      </p>
+          <Link to="/register">¿No tienes cuenta? Regístrate.</Link>
+        </p>
       </form>
     </>
   );
