@@ -14,6 +14,7 @@ body {
 h1 {
   display: flex;
   justify-content: center;
+  font-size: 52px;
   font-family: "Pacifico", cursive;
 }
 
@@ -30,7 +31,7 @@ h1 {
   height: 40px;
   border-radius: 5px;
   padding: 10px 25px;
-  font-family: "Lato", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 500;
   background: transparent;
   cursor: pointer;
@@ -103,7 +104,7 @@ h1 {
   align-items: center;
 }
 
-.input-note {
+.note-input {
   display: flex;
   margin: 2em;
   padding: 3em;
@@ -130,4 +131,29 @@ h1 {
 .container-btn {
   display: flex;
   justify-content: center;
+}
+
+.logout-btn {
+  width: 5rem;
+  height: 5rem;
+  background-image: url(../assets/logout.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+  border: none;
+}
+
+.logout-div {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delete-btn {
+  width: 2rem;
+  height: 2rem;
+  background-image: url(../assets/delete.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+  border: none;
 }

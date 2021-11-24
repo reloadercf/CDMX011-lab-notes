@@ -4,9 +4,9 @@ function Note({ notes, deleteNotes }) {
       <div className="container-post">
         <h4>{notes.title}</h4>
         <p>{notes.text}</p>
-        <div className="container-btns">
+        <div className="container-btn">
           <button
-            className="wall-btn"
+            className="delete-btn"
             onClick={() => {
               console.log(notes.id);
               deleteNotes(notes.id)
@@ -17,9 +17,7 @@ function Note({ notes, deleteNotes }) {
                   console.log(error);
                 });
             }}
-          >
-            Borrar
-          </button>
+          ></button>
           <button className="wall-btn">Editar</button>
         </div>
       </div>

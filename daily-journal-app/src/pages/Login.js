@@ -37,7 +37,9 @@ export function Login() {
   return (
     <>
       <div>
-        <h1>Daily Journal</h1>
+        <h1>
+          Daily <br /> Journal
+        </h1>
       </div>
       <form id="login">
         <input
