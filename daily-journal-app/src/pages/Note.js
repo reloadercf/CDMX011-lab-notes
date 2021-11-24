@@ -3,6 +3,7 @@ function Note({ notes, deleteNotes }) {
     <div className="container-notes">
       <div className="container-post">
         <h4>{notes.title}</h4>
+        <h4>{notes.date.toDate().toLocaleString()}</h4>
         <p>{notes.text}</p>
         <div className="container-btn">
           <button
@@ -18,7 +19,7 @@ function Note({ notes, deleteNotes }) {
                 });
             }}
           ></button>
-          <button className="wall-btn">Editar</button>
+          <button className="edit-btn"></button>
         </div>
       </div>
     </div>

@@ -16,12 +16,18 @@ export function Home() {
 
   return (
     <>
-    <div>
-        <h1>Daily Journal</h1>
+      <div>
+        <h1>
+          Daily <br /> Journal
+        </h1>
       </div>
       <div id="home">
-        <button onClick={loginButton} className="log-button">Login</button>
-        <button onClick={registerButton} className="log-button">Registro</button>
+        <button onClick={loginButton} className="log-button">
+          Login
+        </button>
+        <button onClick={registerButton} className="log-button">
+          Registro
+        </button>
       </div>
     </>
   );

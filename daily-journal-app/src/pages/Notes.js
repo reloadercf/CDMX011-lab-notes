@@ -53,21 +53,21 @@ export function Notes() {
             setTitle(e.target.value);
           }}
           placeholder="Título de la nota"
-          className="note-input"
+          className="note-input-title"
         ></input>
         <input
           onChange={(e) => {
             setText(e.target.value);
           }}
           placeholder="Texto de la nota"
-          className="note-input"
+          className="note-input-text"
         ></input>
-        <button onClick={submitNote} type="submit" className="wall-btn">
-          Publicar
+        <button onClick={submitNote} type="submit" className="log-button">
+          Guardar nota
         </button>
       </div>
       <br />
-      <div>
+      <div className="container-master">
         {notes.map((notes) => (
           <Note notes={notes} key={notes.id} deleteNotes={deleteNotes} />
         ))}

@@ -27,13 +27,13 @@ h1 {
 }
 
 .log-button {
-  width: 130px;
-  height: 40px;
+  width: 15rem;
+  height: 5rem;
   border-radius: 5px;
   padding: 10px 25px;
+  margin: 0.5rem 0;
   font-family: "Montserrat", sans-serif;
-  font-weight: 500;
-  background: transparent;
+  font-size: 24px;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
@@ -104,28 +104,62 @@ h1 {
   align-items: center;
 }
 
-.note-input {
+.input-note {
   display: flex;
-  margin: 2em;
-  padding: 3em;
+  padding: 1.5em;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
+
+.note-input-title {
+  background-color: #50c1e9;
+  border: none;
+  border-radius: 1.5rem;
+  width: 25rem;
+  height: 4rem;
+  padding: 0.9rem 0.9rem;
+  margin: 0.5rem 0;
+}
+
+.note-input-text {
+  background-color: #50c1e9;
+  border: none;
+  border-radius: 1.5rem;
+  width: 25rem;
+  height: 7rem;
+  padding: 0.9rem 0.9rem;
+  margin: 0.5rem 0;
+}
+
+/* .container-master {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+} */
 
 .container-notes {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
 .container-post {
   display: flex;
-  margin: 2em;
-  padding: 3em;
+  margin: 2rem;
+  padding: 1rem;
+  width: 35%;
   flex-direction: column;
   justify-content: center;
   border-style: solid;
-  border-color: violet;
+  border-color: #a94caf;
+  background-color: #fffbcb;
   border-radius: 25px;
+}
+
+h4 {
+  font-size: 18px;
 }
 
 .container-btn {
@@ -152,6 +186,16 @@ h1 {
   width: 2rem;
   height: 2rem;
   background-image: url(../assets/delete.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+  border: none;
+}
+
+.edit-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-image: url(../assets/edit.svg);
   background-repeat: no-repeat;
   background-size: cover;
   background-color: transparent;
