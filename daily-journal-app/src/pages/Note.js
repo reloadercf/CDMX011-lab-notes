@@ -6,6 +6,7 @@ function Note({ notes, deleteNotes }) {
         <p>{notes.text}</p>
         <div className="container-btns">
           <button
+            className="wall-btn"
             onClick={() => {
               console.log(notes.id);
               deleteNotes(notes.id)
@@ -19,7 +20,7 @@ function Note({ notes, deleteNotes }) {
           >
             Borrar
           </button>
-          <button>Editar</button>
+          <button className="wall-btn">Editar</button>
         </div>
       </div>
     </div>

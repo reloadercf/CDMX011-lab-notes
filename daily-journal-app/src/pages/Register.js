@@ -7,19 +7,23 @@ import "../styles/home.css";
 export function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
 
   const history = useHistory();
 
   const emailRegisterBtn = (e) => {
     e.preventDefault();
-    emailRegister(email, password)
-      .then(() => {
-        console.log("Esto funciona, nos hemos registrado como usuarios");
-        history.push("/login");
-      })
-      .catch((error) => {
-        console.log("Hola, no iniciamos sesión");
-      });
+    if (password === confirmPassword) {
+      emailRegister(email, password)
+        .then(() => {
+          history.push("/notes");
+          console.log("El usuario se ha registrado");
+        })
+        .catch((error) => {
+          setError(error.message);
+        });
+    }
   };
 
   const gmailLoginBtn = (e) => {
@@ -29,14 +33,14 @@ export function Register() {
         console.log("Esto funciona, iniciamos sesión");
         history.push("/notes");
       })
-      .catch(() => {
+      .catch((error) => {
         console.log("Hola, no iniciamos sesión");
       });
   };
 
   return (
     <>
-    <div>
+      <div>
         <h1>Daily Journal</h1>
       </div>
       <form id="register">
@@ -56,12 +60,24 @@ export function Register() {
           placeholder="Contraseña"
           className="log-input"
         ></input>
-        <input type="password" placeholder="Confirma tu contraseña" className="log-input"></input>
-        <button onClick={emailRegisterBtn} className="log-button">Ingresar</button>
-        <button onClick={gmailLoginBtn} className="log-button">Ingresar con Google</button>
+        <input
+          onChange={(e) => {
+            setConfirmPassword(e.target.value);
+          }}
+          type="password"
+          placeholder="Confirma tu contraseña"
+          className="log-input"
+        ></input>
+        <button onClick={emailRegisterBtn} className="log-button">
+          Ingresar
+        </button>
+        <button onClick={gmailLoginBtn} className="log-button">
+          Ingresar con Google
+        </button>
+        <p className="error"> {error} </p>
         <p className="log-link">
-        <Link to="/login">¿Ya tienes cuenta? Ingresa.</Link>
-      </p>
+          <Link to="/login">¿Ya tienes cuenta? Ingresa.</Link>
+        </p>
       </form>
     </>
   );

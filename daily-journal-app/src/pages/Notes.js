@@ -3,6 +3,7 @@ import { logOut } from "../lib/auth.js";
 import { saveNotes, deleteNotes } from "../lib/firestore.js";
 import { useHistory } from "react-router-dom";
 import Note from "./Note.js";
+import logoutIcon from "../components/logoutIcon.jsx";
 
 import "../styles/home.css";
 import { db } from "../lib/secret.js";
@@ -44,7 +45,10 @@ export function Notes() {
 
   return (
     <>
-      <button onClick={logoutBtn}>Cerrar sesión</button>
+      <logoutIcon />
+      <button onClick={logoutBtn} className="wall-btn">
+        Cerrar sesión
+      </button>
       <div className="input-note">
         <input
           onChange={(e) => {
@@ -58,7 +62,7 @@ export function Notes() {
           }}
           placeholder="Texto de la nota"
         ></input>
-        <button onClick={submitNote} type="submit">
+        <button onClick={submitNote} type="submit" className="wall-btn">
           Publicar
         </button>
       </div>
