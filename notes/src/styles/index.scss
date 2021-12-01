@@ -1,0 +1,191 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,200;0,300;0,400;0,600;1,200;1,300;1,400;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+$archivo: "Archivo", sans-serif;
+$bebas-neue: "Bebas Neue", cursive;
+$color-midnightblue: #3e3947;
+$color-decorose: #735360;
+$color-burntcoral: #d68684;
+$color-softpink: #f1b0b0;
+$color-palerose: #ebd0c4;
+
+body {
+  background-color: $color-midnightblue;
+}
+
+@mixin fontBebas {
+  font-family: $bebas-neue;
+  font-size: 40px;
+  letter-spacing: 2px;
+}
+
+.background {
+  padding: 25px;
+  color: white;
+
+  .upper {
+    display: flex;
+    flex-flow: row wrap;
+		justify-content: flex-start;
+
+    .logo {
+      @include fontBebas();
+      margin: 0;
+    }
+
+		span{
+			margin-left: auto;
+		}
+  }
+
+	hr{
+		margin-top: 1rem;
+	}
+}
+
+.notesDiv {
+  display: flex;
+  flex-flow: row wrap;
+	justify-content: flex-start;
+	align-content: flex-start;
+	margin: 2rem 2rem 0;
+
+  @mixin noteStyle {
+    border-radius: 3px;
+    padding: 1rem 1rem 5px;
+    height: 250px;
+    width: 220px;
+  }
+
+  @mixin titleStyle {
+    margin-bottom: 10px;
+    width: 210px;
+  }
+
+  @mixin contentStyle {
+    height: 180px;
+    width: 210px;
+  }
+
+  .AddNote {
+    background-color: $color-palerose;
+    @include noteStyle();
+
+    .title {
+      @include titleStyle();
+			font: {
+				family: $archivo;
+				size: 16px;
+			}
+      background-color: $color-palerose;
+			color: $color-midnightblue;
+      border: none;
+      resize: none;
+
+      &::placeholder {
+        font: {
+          family: $archivo;
+          style: italic;
+          size: 16px;
+        }
+        color: $color-decorose;
+      }
+    }
+
+    .contentNote {
+      @include contentStyle();
+			font: {
+				family: $archivo;
+				size: 16px;
+			}
+      background-color: $color-palerose;
+			color: $color-midnightblue;
+      border: none;
+      resize: none;
+
+      &::placeholder {
+        font: {
+          family: $archivo;
+          style: italic;
+          size: 16px;
+        }
+        color: $color-decorose;
+      }
+    }
+
+    .footerNote {
+      display: flex;
+      flex-direction: row;
+			justify-content: flex-start;
+			align-items: center;
+      color: $color-midnightblue;
+			font: {
+				family: $archivo;
+				size: 16px;
+			}
+
+      span.limit {
+        margin-right: 0;
+      }
+
+			span:last-child{
+				margin-left: auto;
+			}
+    }
+  }
+
+	.divData{
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: flex-start;
+		align-content: center;
+		gap: 2rem 3rem;
+
+		.Note {
+    @include noteStyle();
+    font-family: $archivo;
+    background-color: $color-burntcoral;
+    box-sizing: content-box;
+
+    h1 {
+      @include titleStyle();
+      font: {
+        size: 17px;
+				weight: 500;
+				style: italic;
+      }
+			letter-spacing: 1.5px;
+      margin: 0;
+    }
+
+    pre {
+			height: 170px;
+      width: 210px;
+			margin-top: 10px;
+			margin-left: 0;
+			margin-right: 0;
+      font: {
+				family: $archivo;
+        size: 16px;
+				weight: 300;
+      }
+			line-height: 18px;
+			overflow-wrap: break-word;
+			overflow-y: scroll;
+    }
+
+		footer{
+			display: flex;
+			justify-content: flex-end;
+		}
+  }
+	}
+}
+
+.modalBackgroundfalse {
+  display: none;
+}
+
+.modalBackgroundShow {
+  display: flex;
+}
