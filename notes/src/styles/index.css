@@ -17,7 +17,7 @@ code {
 	color: white;
 }
 
-.Note{
+.AddNote{
 	background-color: #F1B0B0;
 	border-radius: 5px;
 	margin-top: 2rem;
@@ -31,6 +31,7 @@ code {
 	border:none;
 	resize: none;
 	margin-bottom: 10px;
+	width: 210px;
 }
 
 .contentNote{
@@ -39,4 +40,22 @@ code {
 	resize: none;
 	height: 180px;
 	width: 210px;
+}
+
+.footerNote{
+	display: flex;
+	flex-direction: row;
+	margin-left: 6rem;
+	margin-right: 0;
+	color: #3E3947;
+}
+
+.btnSaveNote{
+	margin-left: 10px;
+	border-radius: 10px;
+	border:none;
+	background-color: white;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 14px;
 }

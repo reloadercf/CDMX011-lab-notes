@@ -1,7 +1,8 @@
 //import './App.css';
 import React from "react";
 
-import './index.css';
+//import './styles/index.css';
+import './styles/index.scss'
 import {
   BrowserRouter as Router,
   Switch,

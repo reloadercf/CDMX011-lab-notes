@@ -1,32 +1,31 @@
-import React from 'react';
+//import { useState, useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
-import '../index.css';
-import Note from './note';
+//import '../styles/index.css';
+import '../styles/index.scss'
+//import AddNote from './addNote';
+import FetchData from './fetchNotes'
+import { BiExit } from 'react-icons/bi'
 
 export default function Home(){
-	//const [note, setNote] = useState('');
-
-/* 	const addNote = (content) => {
-		console.log(content);
-	} */
-	//const sendNote
-
-	//hacer funcion dispare nuevo componente
-	//use effect
-
     return (
       <div className='background'>
-				<h1 className='echo'>echo;</h1>
-				<Link to='/login'>
-				<button className='buttonExit'>Ir al login</button>
-				</Link>
-				<div className='notes'>
-					{/* <div>Hijo</div>
-					<div>Hijo</div>
-					<div>Hijo</div> */}
-					<Note />
+				<section className='upper'>
+					<h1 className='logo'>&cetera</h1>
+					<span>
+						<Link to='/login'>
+							<BiExit style={{color: 'white', fontSize: '47px'}}/>
+						</Link>
+					</span>
+				</section>
+				<hr />
+				<div className='notesDiv'>
+					<FetchData />
 				</div>
       </div>
     );
   }
+
+	/* 	<img alt='log out the app'
+					src='https://firebasestorage.googleapis.com/v0/b/labnotes-2021.appspot.com/o/outline_exit_to_app_white_24dp.png?alt=media&token=14a0aa84-2d0e-4224-a325-73bef941b839'
+					className='buttonExit'/> */
