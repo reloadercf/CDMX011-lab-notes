@@ -40,45 +40,49 @@ export function Register() {
 
   return (
     <>
-      <div>
-        <h1>Daily Journal</h1>
+      <div className="log-div">
+        <div>
+          <h1>
+            Daily <br /> Journal
+          </h1>
+        </div>
+        <form id="register">
+          <input
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+            type="email"
+            placeholder="Email"
+            className="log-input"
+          ></input>
+          <input
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+            type="password"
+            placeholder="Contraseña"
+            className="log-input"
+          ></input>
+          <input
+            onChange={(e) => {
+              setConfirmPassword(e.target.value);
+            }}
+            type="password"
+            placeholder="Confirma tu contraseña"
+            className="log-input"
+          ></input>
+          <button onClick={emailRegisterBtn} className="log-button">
+            Ingresar
+          </button>
+          <button onClick={gmailLoginBtn} className="log-button">
+            Ingresar con Google
+          </button>
+          <p className="error"> {error} </p>
+          <p className="log-link">
+            <Link to="/login">¿Ya tienes cuenta? Ingresa.</Link>
+          </p>
+        </form>
       </div>
-      <form id="register">
-        <input
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-          type="email"
-          placeholder="Email"
-          className="log-input"
-        ></input>
-        <input
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-          type="password"
-          placeholder="Contraseña"
-          className="log-input"
-        ></input>
-        <input
-          onChange={(e) => {
-            setConfirmPassword(e.target.value);
-          }}
-          type="password"
-          placeholder="Confirma tu contraseña"
-          className="log-input"
-        ></input>
-        <button onClick={emailRegisterBtn} className="log-button">
-          Ingresar
-        </button>
-        <button onClick={gmailLoginBtn} className="log-button">
-          Ingresar con Google
-        </button>
-        <p className="error"> {error} </p>
-        <p className="log-link">
-          <Link to="/login">¿Ya tienes cuenta? Ingresa.</Link>
-        </p>
-      </form>
     </>
   );
 }

@@ -45,6 +45,7 @@ export function Notes() {
   return (
     <>
       <div className="logout-div">
+        <h2>Daily Journal</h2>
         <button onClick={logoutBtn} className="logout-btn"></button>
       </div>
       <div className="input-note">
@@ -53,24 +54,26 @@ export function Notes() {
             setTitle(e.target.value);
           }}
           placeholder="Título de la nota"
-          className="note-input"
+          className="note-input-title"
         ></input>
         <input
           onChange={(e) => {
             setText(e.target.value);
           }}
           placeholder="Texto de la nota"
-          className="note-input"
+          className="note-input-text"
         ></input>
-        <button onClick={submitNote} type="submit" className="wall-btn">
-          Publicar
+        <button onClick={submitNote} type="submit" className="log-button">
+          Guardar nota
         </button>
       </div>
       <br />
-      <div>
-        {notes.map((notes) => (
-          <Note notes={notes} key={notes.id} deleteNotes={deleteNotes} />
-        ))}
+      <div className="container-master">
+        <div className="container-notes">
+          {notes.map((notes) => (
+            <Note notes={notes} key={notes.id} deleteNotes={deleteNotes} />
+          ))}
+        </div>
       </div>
     </>
   );
