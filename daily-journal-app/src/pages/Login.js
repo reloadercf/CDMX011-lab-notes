@@ -36,38 +36,40 @@ export function Login() {
 
   return (
     <>
-      <div>
-        <h1>
-          Daily <br /> Journal
-        </h1>
+      <div className="log-div">
+        <div>
+          <h1>
+            Daily <br /> Journal
+          </h1>
+        </div>
+        <form id="login">
+          <input
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+            type="email"
+            placeholder="Email"
+            className="log-input"
+          ></input>
+          <input
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+            type="password"
+            placeholder="Contraseña"
+            className="log-input"
+          ></input>
+          <button onClick={emailLoginBtn} type="submit" className="log-button">
+            Ingresar
+          </button>
+          <button onClick={gmailLoginBtn} className="log-button">
+            Ingresar con Google
+          </button>
+          <p className="log-link">
+            <Link to="/register">¿No tienes cuenta? Regístrate.</Link>
+          </p>
+        </form>
       </div>
-      <form id="login">
-        <input
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-          type="email"
-          placeholder="Email"
-          className="log-input"
-        ></input>
-        <input
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-          type="password"
-          placeholder="Contraseña"
-          className="log-input"
-        ></input>
-        <button onClick={emailLoginBtn} type="submit" className="log-button">
-          Ingresar
-        </button>
-        <button onClick={gmailLoginBtn} className="log-button">
-          Ingresar con Google
-        </button>
-        <p className="log-link">
-          <Link to="/register">¿No tienes cuenta? Regístrate.</Link>
-        </p>
-      </form>
     </>
   );
 }

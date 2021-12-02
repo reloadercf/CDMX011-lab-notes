@@ -45,6 +45,7 @@ export function Notes() {
   return (
     <>
       <div className="logout-div">
+        <h2>Daily Journal</h2>
         <button onClick={logoutBtn} className="logout-btn"></button>
       </div>
       <div className="input-note">
@@ -68,9 +69,11 @@ export function Notes() {
       </div>
       <br />
       <div className="container-master">
-        {notes.map((notes) => (
-          <Note notes={notes} key={notes.id} deleteNotes={deleteNotes} />
-        ))}
+        <div className="container-notes">
+          {notes.map((notes) => (
+            <Note notes={notes} key={notes.id} deleteNotes={deleteNotes} />
+          ))}
+        </div>
       </div>
     </>
   );
