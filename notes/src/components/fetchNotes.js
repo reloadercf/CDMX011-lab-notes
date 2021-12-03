@@ -1,16 +1,11 @@
 import { useState, useEffect } from "react";
 import { getNotes } from "../firebase/firebaseUtils";
 import { RiDeleteBin6Fill } from 'react-icons/ri';
-//import  ModalDelete  from './modalDelete';
-//import { ShowModal } from "../Hooks/showModal";
 import AddNote from "./addNote";
 import { deleteNote } from "../firebase/firebaseUtils";
 
 export default function FetchData() {
   const [notes, setNotes] = useState([]);
-  //	const [modal, setModal] = useState(false);
-
-//const [open, openModal, closeModal] = ShowModal(false);
 
   const fetchNotes = () => {
     getNotes().onSnapshot((data) => {
@@ -36,7 +31,7 @@ export default function FetchData() {
 					<RiDeleteBin6Fill onClick={() => {
 						deleteNote(item.id)
 					}}
-						style={{fontSize: '25px'}} />
+						style={{fontSize: '22px'}} />
 				</footer>
 			</section>
 		))}
@@ -44,5 +39,3 @@ export default function FetchData() {
 		</div>
 	);
 }
-
-/*<ModalDelete open={open} close={closeModal} noteData={notes}/> */

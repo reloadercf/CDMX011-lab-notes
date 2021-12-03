@@ -51,7 +51,7 @@ export default function AddNote() {
         <span className="limit">/1000</span>
         <span>
           <IoSend
-            style={{ color: "#3E3947", fontSize: "25px" }}
+            style={{ color: "#3E3947", fontSize: "22px" }}
             onClick={() => {
               sendNote();
             }}
