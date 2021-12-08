@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 //no hacer modales
 //usar puro className
 
-export default class Login extends Component {
-  render() {
+export default function Login() {
     return (
       <div>
         <h1>Here's the login</h1>
@@ -17,5 +16,4 @@ export default class Login extends Component {
 				</Link>
       </div>
     );
-  }
 }

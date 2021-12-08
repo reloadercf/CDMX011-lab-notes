@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { getNotes } from "../firebase/firebaseUtils";
-import { RiDeleteBin6Fill } from 'react-icons/ri';
+//import { RiDeleteBin6Fill } from 'react-icons/ri';
+//import { RiEditBoxFill } from 'react-icons/ri';
 import AddNote from "./addNote";
-import { deleteNote } from "../firebase/firebaseUtils";
+import { Note } from "./note";
 
 export default function FetchData() {
   const [notes, setNotes] = useState([]);
@@ -13,7 +14,7 @@ export default function FetchData() {
       data.forEach((item) => {
         doc.push({ ...item.data(), id: item.id });
       });
-      console.log(doc);
+//      console.log(doc);
       setNotes(doc);
     });
   };
@@ -23,17 +24,9 @@ export default function FetchData() {
   }, []);
 
 	return(
-		<div className='divData'>{notes.map((item) => (
-			<section key={item.id} className='Note'>
-				<h1>{item.title}</h1>
-				<pre>{item.content}</pre>
-				<footer>
-					<RiDeleteBin6Fill onClick={() => {
-						deleteNote(item.id)
-					}}
-						style={{fontSize: '22px'}} />
-				</footer>
-			</section>
+		<div className='divData'>
+			{notes.map((item) => (
+			<Note key={item.id} data={item} />
 		))}
 			<AddNote />
 		</div>

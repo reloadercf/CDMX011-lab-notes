@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
 $archivo: "Archivo", sans-serif;
@@ -41,29 +41,30 @@ body {
   }
 }
 
+@mixin noteStyle {
+  border-radius: 3px;
+  padding: 1rem 1rem 5px;
+  height: 250px;
+  width: 220px;
+}
+
+@mixin titleStyle {
+  margin-bottom: 10px;
+  width: 210px;
+}
+
+@mixin contentStyle {
+  height: 180px;
+  width: 210px;
+}
+
+
 .notesDiv {
   display: flex;
   flex-flow: row wrap;
 	justify-content: flex-start;
 	align-content: flex-start;
 	margin: 2rem 2rem 0;
-
-  @mixin noteStyle {
-    border-radius: 3px;
-    padding: 1rem 1rem 5px;
-    height: 250px;
-    width: 220px;
-  }
-
-  @mixin titleStyle {
-    margin-bottom: 10px;
-    width: 210px;
-  }
-
-  @mixin contentStyle {
-    height: 180px;
-    width: 210px;
-  }
 
   .AddNote {
     background-color: $color-palerose;
@@ -150,31 +151,31 @@ body {
 		box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
     box-sizing: content-box;
 
-    h1 {
-      @include titleStyle();
-      font: {
-        size: 17px;
-				weight: 500;
-				style: italic;
-      }
-			letter-spacing: 1.5px;
-			white-space: normal;
-			text-overflow: fade;
-      margin: 0;
-    }
+    	.titleData {
+      	@include titleStyle();
+      	font: {
+         size: 17px;
+				 weight: 500;
+				 style: italic;
+       }
+			 letter-spacing: 1.5px;
+			 white-space: normal;
+			 text-overflow: fade;
+       margin: 0;
+     }
 
-    pre {
-			height: 177px;
-      width: 215px;
-			margin-top: 10px;
-			margin-left: 0;
-			margin-right: 0;
-      font: {
+      .contentData {
+			 height: 177px;
+       width: 215px;
+			 margin-top: 10px;
+			 margin-left: 0;
+			 margin-right: 0;
+       font: {
 				family: $archivo;
         size: 16px;
 				weight: 300;
       }
-			line-height: 20px;
+			line-height: 22px;
 			white-space: pre-line;
 			text-overflow: ellipsis;
 			overflow-wrap: anywhere;
@@ -182,13 +183,14 @@ body {
 			overflow-y: scroll;
 
 				&::-webkit-scrollbar {
-                display: none;
+          display: none;
             }
     }
 
 		footer{
 			display: flex;
 			justify-content: flex-end;
+			gap: 5px;
 		}
   }
 	}
@@ -210,62 +212,140 @@ body {
 	height: 100vh;
 	width: 100vw;
 	pointer-events: auto;
-	transition: opacity 0.5s ease-in-out;
+	transition: opacity 1s ease-in-out;
 
-	.modal{
+	.modalDelete{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 		background-color: white;
-  	border-radius: 5px;
-	  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-	  padding: 3rem;
-	  width: 250px;
-	  max-width: 100%;
-	  text-align: center;
-	  margin: auto;
-
-			span{
-				color: $color-midnightblue;
+		border-radius: 5px;
+		color: $color-midnightblue;
+		padding: 1rem;
+			p{
 				font: {
-					family: $archivo;
-					size: 20px;
-					weight: 400;
+					family:$archivo;
+					size: 18px;
 				}
 			}
 
+			@mixin buttonStyle($colorBg) {
+				background-color: $colorBg;
+				border: none;
+				border-radius: 30px;
+				padding: 10px 15px 10px;
+				color: white;
+				font: {
+					family: $archivo;
+					size: 17px;
+					weight: 600;
+				}
+			}
 			section{
 				display: flex;
 				flex-direction: row;
 				justify-content: center;
-				margin-top: 2rem;
-				gap: 15px;
+				gap: 10px;
 
-				@mixin buttonStyle {
-					border: none;
-					border-radius: 30px;
-					padding: 10px 15px 10px;
-					color: white;
+				button{
+					&:first-child{
+						@include buttonStyle($color-burntcoral);
+					}
+					&:last-child{
+						@include buttonStyle($color-decorose);
+					}
+				}
+			}
+
+	}
+
+	.modal{
+		display: flex;
+		flex-direction: column;
+		background-color: $color-palerose;
+  	border-radius: 5px;
+	  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	  padding: 1rem;
+	  width: 600px;
+		height: 600px;
+	  max-width: 100%;
+	  text-align: center;
+	  margin: auto;
+
+			.editContent{
+				display: flex;
+				justify-content: flex-end;
+			}
+
+			input{
+				background-color: $color-palerose;
+				border: none;
+				margin: 1rem 2rem 0;
+				color: $color-decorose;
+				font: {
+					family: $archivo;
+					size: 24px;
+					weight: 800;
+				}
+
+					&:focus{
+						font-style: italic;
+					}
+			}
+
+			textarea{
+				background-color: $color-palerose;
+				border: none;
+				height: 450px;
+				margin: 1rem 2rem 0;
+				resize: none;
+				color: $color-decorose;
+				font: {
+					family: $archivo;
+					size: 20px;
+					weight: 500;
+				}
+				line-height: 24px;
+				overflow-y: scroll;
+
+					&::-webkit-scrollbar {
+          display: none;
+            }
+			}
+
+			.sectionEdit{
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-start;
+				align-items: center;
+				margin-top: 2rem;
+
+				span{
 					font: {
 						family: $archivo;
-						size: 18px;
-						weight: 500;
+						size: 16px;
+						weight: 600;
+					}
+					color:$color-decorose;
+
+					&.modalCount{
+						margin-left: 1.5rem;
 					}
 				}
 
-				button:first-child{
-					background-color: $color-burntcoral;
-					@include buttonStyle();
-
-						&:active{
-							box-shadow: inset 0 0 20px $shadowbutton-ashyrose;
-						}
+				h4{
+					margin-left: 1rem;
+					color:$color-decorose;
+					font: {
+						family: $archivo;
+						size: 16px;
+						weight: 400;
+						style: italic;
+					}
 				}
 
-				button:last-child{
-					background-color: $color-decorose;
-					@include buttonStyle();
-
-						&:active{
-							box-shadow: inset 0 0 20px $shadowbutton-ashypurple;
-						}
+				div{
+					margin-left: auto;
 				}
 			}
 	}
