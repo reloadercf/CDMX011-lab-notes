@@ -1,0 +1,38 @@
+@use './variables' as v;
+
+@mixin fontBebas {
+  font-family: v.$bebas-neue;
+  font-size: 40px;
+  letter-spacing: 2px;
+}
+
+@mixin noteStyle($bg-color) {
+	background-color: $bg-color;
+  border-radius: 3px;
+  padding: 1rem 1rem 5px;
+  height: 250px;
+  width: 220px;
+}
+
+@mixin titleStyle {
+  margin-bottom: 10px;
+  width: 210px;
+}
+
+@mixin contentStyle {
+  height: 180px;
+  width: 210px;
+}
+
+@mixin buttonStyle($colorBg) {
+      background-color: $colorBg;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 15px 10px;
+      color: white;
+      font: {
+        family: v.$archivo;
+        size: 17px;
+        weight: 600;
+      }
+    }

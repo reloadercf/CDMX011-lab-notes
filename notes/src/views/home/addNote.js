@@ -1,6 +1,5 @@
 import { useState } from "react";
-
-import { saveNote } from "../firebase/firebaseUtils";
+import { saveNote } from "../../firebase/firebaseUtils";
 import { IoSend } from "react-icons/io5";
 
 export default function AddNote() {

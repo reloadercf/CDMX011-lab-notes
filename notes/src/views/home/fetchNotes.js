@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-import { getNotes } from "../firebase/firebaseUtils";
-//import { RiDeleteBin6Fill } from 'react-icons/ri';
-//import { RiEditBoxFill } from 'react-icons/ri';
+import { getNotes } from "../../firebase/firebaseUtils";
 import AddNote from "./addNote";
 import { Note } from "./note";
 
@@ -14,7 +12,7 @@ export default function FetchData() {
       data.forEach((item) => {
         doc.push({ ...item.data(), id: item.id });
       });
-//      console.log(doc);
+      //console.log(doc);
       setNotes(doc);
     });
   };
@@ -23,12 +21,12 @@ export default function FetchData() {
     fetchNotes();
   }, []);
 
-	return(
-		<div className='divData'>
-			{notes.map((item) => (
-			<Note key={item.id} data={item} />
-		))}
+  return (
+    <div className="divData">
 			<AddNote />
-		</div>
-	);
+      {notes.map((item) => (
+        <Note key={item.id} data={item} />
+      ))}
+    </div>
+  );
 }
