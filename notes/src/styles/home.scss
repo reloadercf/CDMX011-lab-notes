@@ -1,0 +1,305 @@
+@use "./variables" as v;
+@use "./mixins" as m;
+
+body {
+  background-color: v.$color-midnightblue;
+}
+
+.background {
+  padding: 25px;
+  color: white;
+
+  .upper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+
+    .logo {
+      @include m.fontBebas();
+      margin: 0;
+    }
+
+    span {
+      margin-left: auto;
+    }
+  }
+}
+
+.notesDiv {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  margin: 2rem 2rem 0;
+
+  .AddNote {
+    @include m.noteStyle(v.$color-palerose);
+
+    .title {
+      @include m.titleStyle();
+      font: {
+        family: v.$archivo;
+        size: 16px;
+      }
+      background-color: v.$color-palerose;
+      color: v.$color-midnightblue;
+      border: none;
+      resize: none;
+
+      &::placeholder {
+        font: {
+          family: v.$archivo;
+          style: italic;
+          size: 16px;
+        }
+        color: v.$color-decorose;
+      }
+    }
+
+    .contentNote {
+      @include m.contentStyle();
+      font: {
+        family: v.$archivo;
+        size: 16px;
+      }
+      background-color: v.$color-palerose;
+      color: v.$color-midnightblue;
+      border: none;
+      resize: none;
+
+      &::placeholder {
+        font: {
+          family: v.$archivo;
+          style: italic;
+          size: 16px;
+        }
+        color: v.$color-decorose;
+      }
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .footerNote {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      color: v.$color-midnightblue;
+      font: {
+        family: v.$archivo;
+        size: 16px;
+      }
+
+      span {
+        &.limit {
+          margin-right: 5px;
+        }
+        &:last-child {
+          margin-left: auto;
+        }
+      }
+    }
+  }
+
+  .divData {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-content: center;
+    gap: 2rem 3rem;
+
+    .Note {
+      @include m.noteStyle(v.$color-burntcoral);
+      font-family: v.$archivo;
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+      box-sizing: content-box;
+
+      .titleData {
+        @include m.titleStyle();
+        font: {
+          size: 17px;
+          weight: 500;
+          style: italic;
+        }
+        letter-spacing: 1.5px;
+        white-space: normal;
+        text-overflow: fade;
+        margin: 0;
+      }
+
+      .contentData {
+        height: 177px;
+        width: 215px;
+        margin-top: 10px;
+        margin-left: 0;
+        margin-right: 0;
+        font: {
+          family: v.$archivo;
+          size: 16px;
+          weight: 300;
+        }
+        line-height: 22px;
+        white-space: pre-line;
+        text-overflow: ellipsis;
+        overflow-wrap: anywhere;
+        hyphens: auto;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+
+      footer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 5px;
+      }
+    }
+  }
+}
+
+.modalBackgroundfalse {
+  display: none;
+}
+
+.modalBackgroundShow {
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  opacity: 1;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  pointer-events: auto;
+  transition: opacity 1s ease-in-out;
+
+  .modalDelete {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    border-radius: 5px;
+    color: v.$color-midnightblue;
+    padding: 2rem;
+    margin-bottom: 1rem;
+    p {
+      font: {
+        family: v.$archivo;
+        size: 18px;
+      }
+    }
+
+    section {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 10px;
+
+      button {
+        &:first-child {
+          @include m.buttonStyle(v.$color-burntcoral);
+        }
+        &:last-child {
+          @include m.buttonStyle(v.$color-decorose);
+        }
+      }
+    }
+  }
+
+  .modal {
+    display: flex;
+    flex-direction: column;
+    background-color: v.$color-palerose;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    width: 600px;
+    height: 600px;
+    max-width: 100%;
+    text-align: center;
+    margin: auto;
+
+    .editContent {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    input {
+      background-color: v.$color-palerose;
+      border: none;
+      margin: 1rem 2rem 0;
+      color: v.$color-decorose;
+      font: {
+        family: v.$archivo;
+        size: 24px;
+        weight: 800;
+      }
+
+      &:focus {
+        font-style: italic;
+      }
+    }
+
+    textarea {
+      background-color: v.$color-palerose;
+      border: none;
+      height: 450px;
+      margin: 1rem 2rem 0;
+      resize: none;
+      color: v.$color-decorose;
+      font: {
+        family: v.$archivo;
+        size: 20px;
+        weight: 500;
+      }
+      line-height: 24px;
+      overflow-y: scroll;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .sectionEdit {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 2rem;
+
+      span {
+        font: {
+          family: v.$archivo;
+          size: 16px;
+          weight: 600;
+        }
+        color: v.$color-decorose;
+
+        &.modalCount {
+          margin-left: 1.5rem;
+        }
+      }
+
+      h4 {
+        margin-left: 1rem;
+        color: v.$color-decorose;
+        font: {
+          family: v.$archivo;
+          size: 16px;
+          weight: 400;
+          style: italic;
+        }
+      }
+
+      div {
+        margin-left: auto;
+      }
+    }
+  }
+}
