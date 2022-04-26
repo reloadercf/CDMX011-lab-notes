@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 
-import { Link, useParams, useHistory } from 'react-router-dom';
+import {
+  Link, useParams, useHistory, Redirect,
+} from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
@@ -49,7 +51,7 @@ const buttonsStyle = {
 };
 
 const EditNote = ({ handleGetNote, handleEditNote }) => {
-  const [note, setNote] = useState('');
+  const [note, setNote] = useState('idDoc');
   const { idDoc } = useParams();
   const history = useHistory();
 
@@ -57,26 +59,33 @@ const EditNote = ({ handleGetNote, handleEditNote }) => {
     handleGetNote(idDoc)
       .then((noteResult) => {
         setNote(noteResult.text);
+      }).catch(() => {
+        setNote(null);
       });
   }, []);
 
   return (
     <div style={fragmentStyle}>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleEditNote(idDoc, note).then(() => {
-            history.push('/');
-          });
-        }}
-        style={formStyle}
-      >
-        <textarea style={textAreaStyle} value={note} placeholder="Termina de editar tu nota" onChange={(e) => { setNote(e.target.value); }} />
-        <div style={buttonsStyle}>
-          <Link to="/"><input style={submitStyle} type="button" value="Cancelar" /></Link>
-          <input style={submitStyle} type="submit" value="Guardar" />
-        </div>
-      </form>
+      {note
+        ? (
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleEditNote(idDoc, note).then(() => {
+                history.push('/');
+              });
+            }}
+            style={formStyle}
+          >
+            <textarea style={textAreaStyle} value={note} placeholder="Termina de editar tu nota" onChange={(e) => { setNote(e.target.value); }} />
+            <div style={buttonsStyle}>
+              <Link to="/"><input style={submitStyle} type="button" value="Cancelar" /></Link>
+              <input style={submitStyle} type="submit" value="Guardar" />
+            </div>
+          </form>
+        )
+        : <Redirect to="/" />}
+
     </div>
 
   );

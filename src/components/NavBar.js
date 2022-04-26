@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 
+import { Link } from 'react-router-dom';
+
 import Logout from './Authenticate/Logout';
 
 const navBarStyle = {
@@ -15,9 +17,14 @@ const navBarStyle = {
   justifyContent: 'space-between',
 };
 
+const logo = {
+  textDecoration: 'none',
+  color: '#fff',
+};
+
 const NavBar = ({ isAuthenticate, handleLogout }) => (
   <div style={navBarStyle}>
-    <h2>Labnotes</h2>
+    <h2><Link to="/" style={logo}>Labnotes</Link></h2>
     {isAuthenticate && <div>{isAuthenticate.email}</div>}
     {isAuthenticate && <Logout handleLogout={handleLogout} />}
   </div>

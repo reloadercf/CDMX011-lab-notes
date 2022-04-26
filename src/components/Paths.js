@@ -10,6 +10,7 @@ import Login from './NoAuthenticate/Login';
 import Signup from './NoAuthenticate/Signup';
 import EditNote from './Authenticate/EditNote';
 import NavBar from './NavBar';
+import NoMatch from './NoMatch';
 
 import { handleLogin, handleCreateAccount, handleLogout } from '../lib/auth';
 import {
@@ -35,6 +36,9 @@ const Paths = ({ isAuthenticate }) => (
             handleEditNote={handleEditNote}
           />
         </Route>
+        <Route path="*">
+          <NoMatch />
+        </Route>
       </Switch>
     ) : (
       <Switch>
@@ -43,6 +47,9 @@ const Paths = ({ isAuthenticate }) => (
         </Route>
         <Route exact path="/signup">
           <Signup handleCreateAccount={handleCreateAccount} />
+        </Route>
+        <Route path="*">
+          <NoMatch />
         </Route>
       </Switch>
     )}
